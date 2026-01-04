@@ -1,0 +1,22 @@
+{
+    "name": "Runtime.CommonTriggerBehaviors",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c6dc6ae42f422474d90695d8ecfb08b2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.maxgreenhill.healthsystem",
+            "expression": "1.1.7",
+            "define": "HAS_HEALTH_SYSTEM"
+        }
+    ],
+    "noEngineReferences": false
+}
