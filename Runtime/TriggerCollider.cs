@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class TriggerCollider : MonoBehaviour
 {
+    // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
+    // This can be useful for debugging especially when multiple triggers are in a scene
     [SerializeField] private UnityEvent<Collider,GameObject> onTriggerEnter;
     [SerializeField] private UnityEvent<Collider,GameObject> onTriggerStay;
     [SerializeField] private UnityEvent<Collider,GameObject> onTriggerExit;
@@ -17,7 +19,6 @@ public class TriggerCollider : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-
         onTriggerStay.Invoke(collision, gameObject);
     }
 
@@ -36,6 +37,7 @@ public class TriggerCollider : MonoBehaviour
     [SerializeField] private UnityEvent<Collider,GameObject> onTriggerStayCollider;
     [SerializeField] private UnityEvent<Collider,GameObject> onTriggerExitCollider;
 
+    //The int parameter is intended to be used for passing the damage amount variable to health system functions
     [SerializeField] private UnityEvent<Collider,int,GameObject> onTriggerEnterColliderInt;
     [SerializeField] private UnityEvent<Collider,int,GameObject> onTriggerStayColliderInt;
     [SerializeField] private UnityEvent<Collider,int,GameObject> onTriggerExitColliderInt;
@@ -99,7 +101,11 @@ public class TriggerCollider : MonoBehaviour
         }
     }
 
-    public enum EventType 
+    /// <summary>
+    /// Types of events for TriggerCollider. 
+    /// Used to determine which UnityEvents to invoke at runtime and which to show in the Inspector.
+    /// </summary>
+    private enum EventType 
     {
         Collider,
         ColliderInt,

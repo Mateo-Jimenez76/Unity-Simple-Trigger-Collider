@@ -19,7 +19,7 @@ public class TriggerColliderEditor : Editor
 
     SerializedProperty damageAmount;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //Get references to SerializedProperties
     void OnEnable()
     {
         onTriggerEnterCollider = serializedObject.FindProperty("onTriggerEnterCollider");
@@ -29,6 +29,7 @@ public class TriggerColliderEditor : Editor
         onTriggerEnterColliderInt = serializedObject.FindProperty("onTriggerEnterColliderInt");
         onTriggerStayColliderInt = serializedObject.FindProperty("onTriggerStayColliderInt");
         onTriggerExitColliderInt = serializedObject.FindProperty("onTriggerExitColliderInt");
+
         onEnterType = serializedObject.FindProperty("onEnterType");
         onStayType = serializedObject.FindProperty("onStayType");
         onExitType = serializedObject.FindProperty("onExitType");
@@ -44,59 +45,69 @@ public class TriggerColliderEditor : Editor
 
         EditorGUILayout.Space();
 
-        EditorGUILayout.PropertyField(onEnterType);
+        //--- OnTriggerEnter Section ---
+        EditorGUILayout.PropertyField(onEnterType, new GUIContent("Event Type", "Determines which UnityEvent(s) are invoked when a Collider enters the trigger."));
+
+        //Determine which UnityEvents to show based on selected EventType
         switch (onEnterType.enumValueIndex)
         {
-            case (0):
-                EditorGUILayout.PropertyField(onTriggerEnterCollider, new GUIContent("OnTriggerEnter"));
+            case (0): // Collider
+                EditorGUILayout.PropertyField(onTriggerEnterCollider, new GUIContent("OnTriggerEnter", "Event triggered when a Collider enters the trigger. Functions called in order from top to bottom."));
                 break;
-            case (1):
-                EditorGUILayout.PropertyField(onTriggerEnterColliderInt, new GUIContent("OnTriggerEnter"));
+            case (1): // ColliderInt
+                EditorGUILayout.PropertyField(onTriggerEnterColliderInt, new GUIContent("OnTriggerEnter", "Event triggered when a Collider enters the trigger. Functions called in order from top to bottom."));
                 break;
-            case (2):
-                EditorGUILayout.PropertyField(onTriggerEnterCollider, new GUIContent("OnTriggerEnter"));
-                EditorGUILayout.PropertyField(onTriggerEnterColliderInt, new GUIContent("OnTriggerEnter"));
+            case (2): // Both
+                EditorGUILayout.PropertyField(onTriggerEnterCollider, new GUIContent("OnTriggerEnter", "Event triggered when a Collider enters the trigger. Functions called in order from top to bottom. This event's functions are invoked BEFORE the <Collider,Int,GameObject> event's functions."));
+                EditorGUILayout.PropertyField(onTriggerEnterColliderInt, new GUIContent("OnTriggerEnter", "Event triggered when a Collider enters the trigger. Functions called in order from top to bottom. This event's functions are invoked AFTER the <Collider,GameObject> event's functions."));
                 break;
         }
 
         EditorGUILayout.Space();
 
-        EditorGUILayout.PropertyField(onStayType);
+        //--- OnTriggerStay Section ---
+        EditorGUILayout.PropertyField(onStayType, new GUIContent("Event Type", "Determines which UnityEvent(s) are invoked when a Collider stays within the trigger."));
+
+        //Determine which UnityEvents to show based on selected EventType
         switch (onStayType.enumValueIndex)
         {
-            case (0):
-                EditorGUILayout.PropertyField(onTriggerStayCollider, new GUIContent("OnTriggerStay"));
+            case (0): // Collider
+                EditorGUILayout.PropertyField(onTriggerStayCollider, new GUIContent("OnTriggerStay", "Event triggered roughly every frame foreach Collider that remains within the trigger. Functions called in order from top to bottom."));
                 break;
-            case (1):
-                EditorGUILayout.PropertyField(onTriggerStayColliderInt, new GUIContent("OnTriggerStay"));
+            case (1): // ColliderInt
+                EditorGUILayout.PropertyField(onTriggerStayColliderInt, new GUIContent("OnTriggerStay", "Event triggered roughly every frame foreach Collider that remains within the trigger. Functions called in order from top to bottom."));
                 break;
-            case (2):
-                EditorGUILayout.PropertyField(onTriggerStayCollider, new GUIContent("OnTriggerStay"));
-                EditorGUILayout.PropertyField(onTriggerStayColliderInt, new GUIContent("OnTriggerStay"));
+            case (2): // Both
+                EditorGUILayout.PropertyField(onTriggerStayCollider, new GUIContent("OnTriggerStay", "Event triggered roughly every frame foreach Collider that remains within the trigger. Functions called in order from top to bottom. This event's functions are invoked BEFORE the <Collider,Int,GameObject> event's functions."));
+                EditorGUILayout.PropertyField(onTriggerStayColliderInt, new GUIContent("OnTriggerStay", "Event triggered roughly every frame foreach Collider that remains within the trigger. Functions called in order from top to bottom. This event's functions are invoked AFTER the <Collider,GameObject> event's functions."));
                 break;
         }
 
         EditorGUILayout.Space();
 
-        EditorGUILayout.PropertyField(onExitType);
+        //--- OnTriggerExit Section ---
+        EditorGUILayout.PropertyField(onExitType, new GUIContent("Event Type", "Determines which UnityEvent(s) are invoked when a Collider exits the trigger."));
+
+        //Determine which UnityEvents to show based on selected EventType
         switch (onExitType.enumValueIndex) 
         {
-            case (0):
-                EditorGUILayout.PropertyField(onTriggerExitCollider, new GUIContent("OnTriggerExit"));
+            case (0): // Collider
+                EditorGUILayout.PropertyField(onTriggerExitCollider, new GUIContent("OnTriggerExit", "Event triggered when a Collider exits the trigger. Functions called in order from top to bottom."));
                 break;
-            case(1):
-                EditorGUILayout.PropertyField(onTriggerExitColliderInt, new GUIContent("OnTriggerExit"));
+            case(1): // ColliderInt
+                EditorGUILayout.PropertyField(onTriggerExitColliderInt, new GUIContent("OnTriggerExit", "Event triggered when a Collider exits the trigger. Functions called in order from top to bottom."));
                 break;
-            case(2):
-                EditorGUILayout.PropertyField(onTriggerExitCollider, new GUIContent("OnTriggerExit"));
-                EditorGUILayout.PropertyField(onTriggerExitColliderInt, new GUIContent("OnTriggerExit"));
+            case(2): // Both
+                EditorGUILayout.PropertyField(onTriggerExitCollider, new GUIContent("OnTriggerExit", "Event triggered when a Collider exits the trigger. Functions called in order from top to bottom. This event's functions are invoked BEFORE the <Collider,Int,GameObject> event's functions."));
+                EditorGUILayout.PropertyField(onTriggerExitColliderInt, new GUIContent("OnTriggerExit", "Event triggered when a Collider exits the trigger. Functions called in order from top to bottom. This event's functions are invoked AFTER the <Collider,GameObject> event's functions."));
                 break;
         }
 
         EditorGUILayout.Space();
 
+        //--- Simple Health System Section ---
         EditorGUILayout.LabelField("Simple Health System", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(damageAmount);
+        EditorGUILayout.PropertyField(damageAmount, new GUIContent("Damage Amount", "Amount of damage to apply when using the <Collider, Int, GameObject> events."));
 
         serializedObject.ApplyModifiedProperties();
     }

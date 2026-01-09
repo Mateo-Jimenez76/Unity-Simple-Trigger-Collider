@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class TriggerCollider2D : MonoBehaviour
 {
+    // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
+    // This can be useful for debugging especially when multiple triggers are in a scene
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerEnter;
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerStay;
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerExit;
@@ -17,7 +19,6 @@ public class TriggerCollider2D : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         onTriggerStay.Invoke(collision, gameObject);
     }
 
@@ -36,6 +37,7 @@ public class TriggerCollider2D : MonoBehaviour
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerStayCollider2D;
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerExitCollider2D;
 
+    //The int parameter is intended to be used for passing the damage amount variable to health system functions
     [SerializeField] private UnityEvent<Collider2D,int,GameObject> onTriggerEnterCollider2DInt;
     [SerializeField] private UnityEvent<Collider2D,int,GameObject> onTriggerStayCollider2DInt;
     [SerializeField] private UnityEvent<Collider2D,int,GameObject> onTriggerExitCollider2DInt;
@@ -99,7 +101,11 @@ public class TriggerCollider2D : MonoBehaviour
         }
     }
 
-    public enum EventType 
+    /// <summary>
+    /// Types of events for TriggerCollider. 
+    /// Used to determine which UnityEvents to invoke at runtime and which to show in the Inspector.
+    /// </summary>
+    private enum EventType 
     {
         Collider2D,
         Collider2DInt,
