@@ -55,11 +55,11 @@ public class TriggerCollider2D : MonoBehaviour
                 onTriggerEnterCollider2D.Invoke(collision, gameObject);
                 break;
             case (EventType.Collider2DInt):
-                onTriggerEnterCollider2DInt.Invoke(collision, damageAmount);
+                onTriggerEnterCollider2DInt.Invoke(collision, damageAmount, gameObject);
                 break;
             case (EventType.Both):
                 onTriggerEnterCollider2D.Invoke(collision, gameObject);
-                onTriggerEnterCollider2DInt.Invoke(collision, damageAmount);
+                onTriggerEnterCollider2DInt.Invoke(collision, damageAmount, gameObject);
                 break;
         }
 
@@ -73,11 +73,11 @@ public class TriggerCollider2D : MonoBehaviour
                 onTriggerStayCollider2D.Invoke(collision, gameObject);
                 break;
             case (EventType.Collider2DInt):
-                onTriggerStayCollider2DInt.Invoke(collision, damageAmount);
+                onTriggerStayCollider2DInt.Invoke(collision, damageAmount, gameObject);
                 break;
             case (EventType.Both):
                 onTriggerStayCollider2D.Invoke(collision, gameObject);
-                onTriggerStayCollider2DInt.Invoke(collision, damageAmount);
+                onTriggerStayCollider2DInt.Invoke(collision, damageAmount, gameObject);
                 break;
         }
     }
@@ -90,11 +90,11 @@ public class TriggerCollider2D : MonoBehaviour
                 onTriggerExitCollider2D.Invoke(collision, gameObject);
                 break;
             case (EventType.Collider2DInt):
-                onTriggerExitCollider2DInt.Invoke(collision, damageAmount);
+                onTriggerExitCollider2DInt.Invoke(collision, damageAmount, gameObject);
                 break;
             case (EventType.Both):
                 onTriggerExitCollider2D.Invoke(collision, gameObject);
-                onTriggerExitCollider2DInt.Invoke(collision, damageAmount);
+                onTriggerExitCollider2DInt.Invoke(collision, damageAmount, gameObject);
                 break;
         }
     }
