@@ -2,7 +2,7 @@
   "name": "com.mateojimenez.triggercollider",
   "version": "1.3.0",
   "displayName": "Simple Trigger Colliders",
-  "description": "",
+  "description": "A flexible and fast way to implement trigger colliders into your projects.",
   "unity": "6000.2",
   "unityRelease": "",
   "documentationUrl": "https://github.com/Mateo-Jimenez76/Unity-TriggerCollider",
