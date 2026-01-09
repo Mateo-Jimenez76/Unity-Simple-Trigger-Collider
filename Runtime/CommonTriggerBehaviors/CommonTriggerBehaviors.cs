@@ -10,7 +10,7 @@ public class CommonTriggerBehaviors : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void DestroyObjectCollidedWith(Collider2D collision, GameObject caller)
     {
-        Debug.Log("Destroying " + collision.name);
+        Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
         Destroy(collision.gameObject);
     }
 
@@ -22,7 +22,7 @@ public class CommonTriggerBehaviors : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void DestroyObjectCollidedWith(Collider collision, GameObject caller)
     {
-        Debug.Log("Destroying " + collision.name);
+        Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
         Destroy(collision.gameObject);
     }
 
@@ -30,7 +30,7 @@ public class CommonTriggerBehaviors : ScriptableObject
     /// Loads a scene asynchronously by name.
     /// </summary>
     /// <param name="sceneName">The name of the scene as listed in Build Settings</param>
-    public void LoadSceneAsync(string sceneName)
+    public static void LoadSceneAsync(string sceneName)
     {
         Debug.Log("Loading scene " + sceneName + " asynchronously.");
         SceneManager.LoadSceneAsync(sceneName);
@@ -44,7 +44,7 @@ public class CommonTriggerBehaviors : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void LogCollision(Collider collision, GameObject caller)
     {
-        Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}");
+        Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
     }
 
     /// <summary>
@@ -55,21 +55,22 @@ public class CommonTriggerBehaviors : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void LogCollision(Collider2D collision, GameObject caller)
     {
-        Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}");
+        Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
     }
 
-    //Health Package Functions
+
 #if HAS_HEALTH_SYSTEM
 
-    public void DamageOther(Collider2D other, int damage)
+    public static void DamageObjectCollidedWith(Collider2D other, int damage, GameObject caller)
     {
         if (other.TryGetComponent<Health>(out Health health))
         {
+            Debug.Log($"Dealing {damage} damage to {other.name} because they collided with {caller.name}.");
             health.Damage(damage);
         }
         else
         {
-            Debug.LogWarning($"No <color=lime>Health</color> component found on {other.name}. Skipping damage dealing...");
+            Debug.LogWarning($"No Health component found on {other.name} which collided with {caller.name}. Skipping damage dealing...");
         }
     }
 #endif
