@@ -1,11 +1,11 @@
 {
-    "name": "SimpleTriggerColliders.Runtime",
+    "name": "Runtime.CommonUseCaseFunctions",
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
+    "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -1,14 +1,18 @@
 {
-    "name": "SimpleTriggerColliders.Runtime",
+    "name": "CommonUseCaseFunctions.HealthPackageAddOn",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:c6dc6ae42f422474d90695d8ecfb08b2"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
+    "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "HAS_HEALTH_SYSTEM"
+    ],
     "versionDefines": [
         {
             "name": "com.mateojimenez.healthsystem",
