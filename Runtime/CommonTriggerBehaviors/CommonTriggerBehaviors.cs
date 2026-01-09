@@ -61,7 +61,36 @@ public class CommonTriggerBehaviors : ScriptableObject
 
 #if HAS_HEALTH_SYSTEM
 
+    /// <summary>
+    /// Deals damage to the Health component on the object corresponding to the Collider2D passed in.
+    /// The intended purpose is to be used as a dynamic function, meaning that the parameters get their data from
+    /// UnityEvent<Collider2D,int> automatically.
+    /// </summary>
+    /// <param name="other">The Collider2D of the object to deal damage to</param>
+    /// <param name="damage">The amount of damage to deal</param>
+    /// <param name="caller">The object that is calling this function</param>
     public static void DamageObjectCollidedWith(Collider2D other, int damage, GameObject caller)
+    {
+        if (other.TryGetComponent<Health>(out Health health))
+        {
+            Debug.Log($"Dealing {damage} damage to {other.name} because they collided with {caller.name}.");
+            health.Damage(damage);
+        }
+        else
+        {
+            Debug.LogWarning($"No Health component found on {other.name} which collided with {caller.name}. Skipping damage dealing...");
+        }
+    }
+
+    /// <summary>
+    /// Deals damage to the Health component on the object corresponding to the Collider2D passed in.
+    /// The intended purpose is to be used as a dynamic function, meaning that the parameters get their data from
+    /// UnityEvent<Collider2D,int> automatically.
+    /// </summary>
+    /// <param name="other">The Collider2D of the object to deal damage to</param>
+    /// <param name="damage">The amount of damage to deal</param>
+    /// <param name="caller">The object that is calling this function</param>
+    public static void DamageObjectCollidedWith(Collider other, int damage, GameObject caller)
     {
         if (other.TryGetComponent<Health>(out Health health))
         {

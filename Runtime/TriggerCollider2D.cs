@@ -36,9 +36,9 @@ public class TriggerCollider2D : MonoBehaviour
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerStayCollider2D;
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerExitCollider2D;
 
-    [SerializeField] private UnityEvent<Collider2D,int> onTriggerEnterCollider2DInt;
-    [SerializeField] private UnityEvent<Collider2D,int> onTriggerStayCollider2DInt;
-    [SerializeField] private UnityEvent<Collider2D,int> onTriggerExitCollider2DInt;
+    [SerializeField] private UnityEvent<Collider2D,int,GameObject> onTriggerEnterCollider2DInt;
+    [SerializeField] private UnityEvent<Collider2D,int,GameObject> onTriggerStayCollider2DInt;
+    [SerializeField] private UnityEvent<Collider2D,int,GameObject> onTriggerExitCollider2DInt;
 
     [SerializeField] private EventType onEnterType = EventType.Collider2D;
     [SerializeField] private EventType onStayType = EventType.Collider2D;
@@ -54,7 +54,7 @@ public class TriggerCollider2D : MonoBehaviour
             case (EventType.Collider2D):
                 onTriggerEnterCollider2D.Invoke(collision, gameObject);
                 break;
-            case (EventType.Collider2DAndInt):
+            case (EventType.Collider2DInt):
                 onTriggerEnterCollider2DInt.Invoke(collision, damageAmount);
                 break;
             case (EventType.Both):
@@ -72,7 +72,7 @@ public class TriggerCollider2D : MonoBehaviour
             case (EventType.Collider2D):
                 onTriggerStayCollider2D.Invoke(collision, gameObject);
                 break;
-            case (EventType.Collider2DAndInt):
+            case (EventType.Collider2DInt):
                 onTriggerStayCollider2DInt.Invoke(collision, damageAmount);
                 break;
             case (EventType.Both):
@@ -89,7 +89,7 @@ public class TriggerCollider2D : MonoBehaviour
             case (EventType.Collider2D):
                 onTriggerExitCollider2D.Invoke(collision, gameObject);
                 break;
-            case (EventType.Collider2DAndInt):
+            case (EventType.Collider2DInt):
                 onTriggerExitCollider2DInt.Invoke(collision, damageAmount);
                 break;
             case (EventType.Both):
@@ -102,7 +102,7 @@ public class TriggerCollider2D : MonoBehaviour
     public enum EventType 
     {
         Collider2D,
-        Collider2DAndInt,
+        Collider2DInt,
         Both
     }
 }
