@@ -1,3 +1,14 @@
+## [1.4.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.4.0...v1.4.1) (2026-01-10)
+
+
+### Bug Fixes
+
+* **CustomSettings:** Always creating new Assets/Resources folder ([f0b82e5](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/f0b82e5be66527ff9d29af0a5a4083b84d0ce2ce))
+* **CustomSettings:** Null reference error when opening settings for first time. ([6367335](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6367335c0d755c235b65306af0d7ff10ca780f72))
+* **CustomSettings:** Null references when loading settings ([6ab8d28](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6ab8d28adee3698b7037216c3abcfc71f5d4acc6))
+
+
+
 # [1.4.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.3.0...v1.4.0) (2026-01-10)
 
 
