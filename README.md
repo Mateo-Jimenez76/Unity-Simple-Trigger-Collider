@@ -29,10 +29,10 @@ A new sections labeled "Simple Health System" will appear with an int value belo
 And before all UnityEvents there will be an enum labeled "Event Type" which controls the information that is passed in to the functions passed.
 If you do not wish to you use the triggers for the purpose of damage dealing you can ignore this change.
 
-IMAGE OF CHANGED INSPECTOR
+<img width="699" height="570" alt="Screenshot of custom inspector for TriggerCollider2D.cs" src="https://github.com/user-attachments/assets/522813c3-b241-49a8-b00d-12643adc7aa0" />
 
 ### Documentation and Tooltips
-Tooltips are included for the varibles in the inspector of all scripts 
+Tooltips are included for variables in the inspector of all scripts 
 and documentation comments are above all functions which describe their behavior and the parameters expected.
 
 # How To Use
@@ -47,7 +47,7 @@ Add a TriggerCollider or TriggerCollider2D component to an object.
 A component of type Collider(2D) is required by the script. If one is not already present, then a BoxCollider(2D) will be added to the object and marked as trigger.
 
 >[!TIP]
-> The Collider(2D) that is created by default can be changed in the settings menu of the package found in "Edit/Project Settings"
+> The Collider(2D) that is created by default can be changed in the settings menu of the package found in "Edit/Project Settings/Simple Trigger Colliders"
 
 Once a component of type Collider is added it cannot be removed (if it is the only Collider(2D) on the game object) due to the effect of [RequireComponent(typeof(Collider))](https://docs.unity3d.com/ScriptReference/Collider.html). This is done to prevent the script from breaking as it relies on the precense of a Collider(2D) component.
 
@@ -74,5 +74,6 @@ and that one parameter must be a Collider(2D).
 
 In order to use the functions, place the CommonUseCaseFunctions scriptable object found at /SimpleTriggerCollider/Runtime/CommonUseCase in the object field of the Unity Event you wish to use the function in. Then select the corresponding function you wish to use. \
 The reason for the use of a scriptable object is to circumvent the limitation that UnityEvents can only call functions from object references and not scripts. You cannot create this scriptable object nor does it have any parameters in the inspector to change.
+
 
 
