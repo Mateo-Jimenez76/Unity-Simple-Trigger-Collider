@@ -5,7 +5,7 @@ public class CustomSettings : ScriptableObject
     // Path to the asset that will hold the settings information
     // "Asset/Editor" restricts your ability to use these settings at runtime
     // So "Assets/Resources" is a better location if runtime access is needed
-    public const string settingsPath = "Assets/Resources/CustomSettings.asset";
+    public const string settingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
 
     // --- Settings for your package ---
     [SerializeField] private bool debugLogs;
@@ -14,10 +14,30 @@ public class CustomSettings : ScriptableObject
 
     [SerializeField] private Collider2DType defaultCollider2DType;
 
+    /// <summary>
+    /// Retrieves the existing custom settings asset if it exists; otherwise, creates a new settings asset with default
+    /// values and returns it.
+    /// </summary>
+    /// <remarks>If the settings asset does not exist at the expected path, this method creates the necessary
+    /// folder structure and a new settings asset with default values. The method ensures that a valid settings asset is
+    /// always returned, simplifying access to configuration data.</remarks>
+    /// <returns>A <see cref="CustomSettings"/> instance representing the current settings. If no settings asset exists, a new
+    /// one is created and returned.</returns>
     internal static CustomSettings GetOrCreateSettings()
     {
+        //Check that there is a valid location to store the settings.asset
+        var resources = AssetDatabase.LoadAssetAtPath<CustomSettings>("Assets/Resources");
+        //If not...
+        if (resources == null)
+        {
+            //...Create the Resources folder
+            AssetDatabase.CreateFolder("Assets", "Resources");
+        }
+
+        //Try to load the settings asset
         var settings = AssetDatabase.LoadAssetAtPath<CustomSettings>(settingsPath);
 
+        //If the settings asset does not exist...
         if (settings == null)
         {
             //Create an instance of the settings object
@@ -32,6 +52,7 @@ public class CustomSettings : ScriptableObject
             AssetDatabase.CreateAsset(settings, settingsPath);
             AssetDatabase.SaveAssets();
         }
+
         return settings;
     }
 

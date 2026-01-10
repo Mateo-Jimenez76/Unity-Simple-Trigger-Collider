@@ -5,7 +5,7 @@ public class CustomSettingsProvider : SettingsProvider
 {
     private SerializedObject SerializedSettings;
 
-    public const string mySettingsPath = "Assets/Resources/CustomSettings.asset";
+    public const string mySettingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
 
     //Constructor
     //SettingsScope determines where the settings are stored (User(Preferences) or Project(Project Settings))
