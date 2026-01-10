@@ -30,11 +30,10 @@ public class CustomSettings : ScriptableObject
     internal static CustomSettings GetOrCreateSettings()
     {
         //Check that there is a valid location to store the settings.asset
-        var resources = AssetDatabase.LoadAssetAtPath<CustomSettings>("Assets/Resources");
         //If not...
-        if (resources == null)
+        if (!AssetDatabase.IsValidFolder("Assets/Resources"))
         {
-            Logger.Log("Creating Resources folder for Simple Trigger Collider settings...");
+            Logger.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
             //...Create the Resources folder
             AssetDatabase.CreateFolder("Assets", "Resources");
         }
@@ -50,13 +49,15 @@ public class CustomSettings : ScriptableObject
 
             //Set default values for settings
             settings.debugLogs = true;
+            settings.warningLogs = true;
+            settings.errorLogs = true;
             settings.defaultColliderType = ColliderType.Box;
             settings.defaultCollider2DType = Collider2DType.Box;
 
             //Save the settings object as an asset
             AssetDatabase.CreateAsset(settings, settingsPath);
             AssetDatabase.SaveAssets();
-            Logger.Log("Created Simple Trigger Collider settings at: " + settingsPath);
+            Logger.LogWarning("Created Simple Trigger Collider settings at: " + settingsPath);
         }
 
         return settings;
