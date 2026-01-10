@@ -1,7 +1,9 @@
 {
     "name": "SimpleTriggerColliders.Runtime",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:5de7a88187d86924cb705092ac7cba17"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

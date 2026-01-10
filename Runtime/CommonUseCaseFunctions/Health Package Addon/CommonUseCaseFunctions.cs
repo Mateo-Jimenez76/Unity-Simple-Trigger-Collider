@@ -11,7 +11,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void DestroyObjectCollidedWith(Collider2D collision, GameObject caller)
     {
-        Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+        Logger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
         Destroy(collision.gameObject);
     }
 
@@ -23,7 +23,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void DestroyObjectCollidedWith(Collider collision, GameObject caller)
     {
-        Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+        Logger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
         Destroy(collision.gameObject);
     }
 
@@ -33,7 +33,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="sceneName">The name of the scene as listed in Build Settings</param>
     public static void LoadSceneAsync(string sceneName)
     {
-        Debug.Log("Loading scene " + sceneName + " asynchronously.");
+        Logger.Log("Loading scene " + sceneName + " asynchronously.");
         SceneManager.LoadSceneAsync(sceneName);
     }
 
@@ -45,7 +45,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void LogCollision(Collider collision, GameObject caller)
     {
-        Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+        Logger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void LogCollision(Collider2D collision, GameObject caller)
     {
-        Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+        Logger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
     }
 
     /// <summary>
@@ -71,12 +71,12 @@ public class CommonUseCaseFunctions : ScriptableObject
     {
         if (other.TryGetComponent<Health>(out Health health))
         {
-            Debug.Log($"Dealing {damage} damage to {other.name} because they collided with {caller.name}.");
+            Logger.Log($"Dealing {damage} damage to {other.name} because they collided with {caller.name}.");
             health.Damage(damage);
         }
         else
         {
-            Debug.LogWarning($"No Health component found on {other.name} which collided with {caller.name}. Skipping damage dealing...");
+            Logger.LogWarning($"No Health component found on {other.name} which collided with {caller.name}. Skipping damage dealing...");
         }
     }
 
@@ -92,12 +92,12 @@ public class CommonUseCaseFunctions : ScriptableObject
     {
         if (other.TryGetComponent<Health>(out Health health))
         {
-            Debug.Log($"Dealing {damage} damage to {other.name} because they collided with {caller.name}.");
+            Logger.Log($"Dealing {damage} damage to {other.name} because they collided with {caller.name}.");
             health.Damage(damage);
         }
         else
         {
-            Debug.LogWarning($"No Health component found on {other.name} which collided with {caller.name}. Skipping damage dealing...");
+            Logger.LogWarning($"No Health component found on {other.name} which collided with {caller.name}. Skipping damage dealing...");
         }
     }
 }

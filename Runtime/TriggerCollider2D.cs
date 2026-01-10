@@ -1,6 +1,10 @@
-using UnityEditor;
+using System.ComponentModel;
+using System.Net.NetworkInformation;
+using Unity.Android.Gradle.Manifest;
+using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.Events;
+using Collider2DType = CustomSettings.Collider2DType;
 
 #if !HAS_HEALTH_SYSTEM
 [RequireComponent(typeof(Collider2D))]
@@ -11,6 +15,40 @@ public class TriggerCollider2D : MonoBehaviour
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerEnter;
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerStay;
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerExit;
+
+    public void OnValidate()
+    {
+        //Check if a collider2D exists on the game object.
+        if (TryGetComponent<Collider2D>(out Collider2D collider2D)) 
+        {
+            //If one exists, then skip the rest of the function.
+            return;
+        }
+
+        //Load Package Settings
+        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+
+        //Check for what kind of Collider2D to create
+        switch (settings.defaultCollider2DType)
+        {
+            case (Collider2DType.Box):
+                Logger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
+                break;
+            case (Collider2DType.Circle):
+                Logger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
+                break;
+            case (Collider2DType.Polygon):
+                Logger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
+                break;
+            case (Collider2DType.Edge):
+                Logger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
+                break;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,6 +86,40 @@ public class TriggerCollider2D : MonoBehaviour
 
 
     [SerializeField] private int damageAmount = 10;
+
+    public void OnValidate()
+    {
+        //Check if a collider2D exists on the game object.
+        if (TryGetComponent<Collider2D>(out Collider2D collider2D)) 
+        {
+            //If one exists, then skip the rest of the function.
+            return;
+        }
+
+        //Load Package Settings
+        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+
+        //Check for what kind of Collider2D to create
+        switch (settings.defaultCollider2DType)
+        {
+            case (Collider2DType.Box):
+                Logger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
+                break;
+            case (Collider2DType.Circle):
+                Logger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
+                break;
+            case (Collider2DType.Polygon):
+                Logger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
+                break;
+            case (Collider2DType.Edge):
+                Logger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
+                break;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
