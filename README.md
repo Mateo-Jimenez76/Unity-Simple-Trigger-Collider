@@ -31,8 +31,11 @@ If you do not wish to you use the triggers for the purpose of damage dealing you
 
 <img width="699" height="570" alt="Screenshot of custom inspector for TriggerCollider2D.cs" src="https://github.com/user-attachments/assets/522813c3-b241-49a8-b00d-12643adc7aa0" />
 
+### Package Settings
+You can control the kind of logs that get put into the console(debug, warning, error) and the Collider(2D) that is created by default if one is missing.
+
 ### Documentation and Tooltips
-Tooltips are included for variables in the inspector of all scripts 
+Tooltips are included for variables in the inspector of all scripts and in the package settings.
 and documentation comments are above all functions which describe their behavior and the parameters expected.
 
 # How To Use
@@ -74,6 +77,7 @@ and that one parameter must be a Collider(2D).
 
 In order to use the functions, place the CommonUseCaseFunctions scriptable object found at /SimpleTriggerCollider/Runtime/CommonUseCase in the object field of the Unity Event you wish to use the function in. Then select the corresponding function you wish to use. \
 The reason for the use of a scriptable object is to circumvent the limitation that UnityEvents can only call functions from object references and not scripts. You cannot create this scriptable object nor does it have any parameters in the inspector to change.
+
 
 
 
