@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.4.1...v1.5.0) (2026-01-11)
+
+
+### Features
+
+* **CustomSettings:** Add tooltips to package settings ([7923dca](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/7923dca3de6c53ae0cc61c4f5b197b939352a821))
+
+
+
 ## [1.4.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.4.0...v1.4.1) (2026-01-10)
 
 
@@ -44,15 +53,6 @@
 * **CommonTriggerBehaviors:** Made debug logs more descriptive ([3a86b3f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/3a86b3f6291af3eade1856d9c024d3e1456c3117))
 * Created Custom Inspector for TriggerCollider2D ([00f1b60](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/00f1b606d9cf6dc931ac9193aa199ecca197e26f))
 * **TriggerCollider:** Implement health package update into 3D trigger collider ([238f7c2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/238f7c2bd3e5235a6a28bfb6fd473a5a5301f708))
-
-
-
-# [1.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/96d1350cf23a0b1d6d8c91fbc8bc1c5112b53c17...v1.1.0) (2025-12-15)
-
-
-### Features
-
-* Added TriggerCollider 2D/3D ([96d1350](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/96d1350cf23a0b1d6d8c91fbc8bc1c5112b53c17))
 
 
 
