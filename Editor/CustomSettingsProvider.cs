@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine.UIElements;
+using UnityEngine;
 public class CustomSettingsProvider : SettingsProvider
 {
     private SerializedObject SerializedSettings;
@@ -39,11 +40,11 @@ public class CustomSettingsProvider : SettingsProvider
     public override void OnGUI(string searchContext)
     {
         SerializedSettings.Update();
-        EditorGUILayout.PropertyField(debugLogsProp);
-        EditorGUILayout.PropertyField(warningLogsProp);
-        EditorGUILayout.PropertyField(errorLogsProp);
-        EditorGUILayout.PropertyField(defaultColliderTypeProp);
-        EditorGUILayout.PropertyField(defaultCollider2DTypeProp);
+        EditorGUILayout.PropertyField(debugLogsProp, new GUIContent("Debug Logs", "Enables or disables debug logs."));
+        EditorGUILayout.PropertyField(warningLogsProp, new GUIContent("Warning Logs", "Enables or disables warning logs."));
+        EditorGUILayout.PropertyField(errorLogsProp, new GUIContent("Error Logs", "Enables or disables error logs."));
+        EditorGUILayout.PropertyField(defaultColliderTypeProp, new GUIContent("Default Collider", "The Collider that is automatically created, when one is missing, on an object that has TriggerCollider.cs attached to it."));
+        EditorGUILayout.PropertyField(defaultCollider2DTypeProp, new GUIContent("Default Collider2D","The Collider2D that is automatically created, when one is missing, on an objec that has TriggerCollider2D.cs attached to it."));
         SerializedSettings.ApplyModifiedPropertiesWithoutUndo();
     }
 
