@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public static class Logger
+public static class PackageLogger
 {
     public static void Log(string message)
     {

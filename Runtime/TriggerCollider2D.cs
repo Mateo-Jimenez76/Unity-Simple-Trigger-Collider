@@ -28,19 +28,19 @@ public class TriggerCollider2D : MonoBehaviour
         switch (settings.GetDefaultCollider2DType())
         {
             case (Collider2DType.Box):
-                Logger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
                 break;
             case (Collider2DType.Circle):
-                Logger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
                 break;
             case (Collider2DType.Polygon):
-                Logger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
                 break;
             case (Collider2DType.Edge):
-                Logger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
                 break;
         }
@@ -99,19 +99,19 @@ public class TriggerCollider2D : MonoBehaviour
         switch (settings.GetDefaultCollider2DType())
         {
             case (Collider2DType.Box):
-                Logger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
                 break;
             case (Collider2DType.Circle):
-                Logger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
                 break;
             case (Collider2DType.Polygon):
-                Logger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
                 break;
             case (Collider2DType.Edge):
-                Logger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
                 break;
         }

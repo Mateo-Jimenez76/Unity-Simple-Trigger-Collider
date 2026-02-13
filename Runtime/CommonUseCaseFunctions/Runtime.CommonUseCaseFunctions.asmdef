@@ -2,7 +2,8 @@
     "name": "Runtime.CommonUseCaseFunctions",
     "rootNamespace": "",
     "references": [
-        "GUID:6e86d7c8f3dabe24c87a68162b8b5954"
+        "GUID:6e86d7c8f3dabe24c87a68162b8b5954",
+        "GUID:5de7a88187d86924cb705092ac7cba17"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

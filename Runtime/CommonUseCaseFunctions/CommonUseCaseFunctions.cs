@@ -12,7 +12,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void DestroyObjectCollidedWith(Collider2D collision, GameObject caller)
     {
-        Logger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+        PackageLogger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
         Destroy(collision.gameObject);
     }
 
@@ -24,7 +24,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void DestroyObjectCollidedWith(Collider collision, GameObject caller)
     {
-        Logger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+        PackageLogger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
         Destroy(collision.gameObject);
     }
 
@@ -34,7 +34,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="sceneName">The name of the scene as listed in Build Settings</param>
     public static void LoadSceneAsync(string sceneName)
     {
-        Logger.Log("Loading scene " + sceneName + " asynchronously.");
+        PackageLogger.Log("Loading scene " + sceneName + " asynchronously.");
         SceneManager.LoadSceneAsync(sceneName);
     }
 
@@ -46,7 +46,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void LogCollision(Collider collision, GameObject caller)
     {
-        Logger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+        PackageLogger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public class CommonUseCaseFunctions : ScriptableObject
     /// <param name="caller">The object that is calling this function</param>
     public static void LogCollision(Collider2D collision, GameObject caller)
     {
-        Logger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+        PackageLogger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
     }
 }
 #endif

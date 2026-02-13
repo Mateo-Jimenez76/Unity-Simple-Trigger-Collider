@@ -38,7 +38,7 @@ public class CustomSettings : ScriptableObject
         //If not...
         if (!AssetDatabase.IsValidFolder("Assets/Resources"))
         {
-            Logger.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
+            PackageLogger.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
             //...Create the Resources folder
             AssetDatabase.CreateFolder("Assets", "Resources");
         }
@@ -62,7 +62,7 @@ public class CustomSettings : ScriptableObject
             //Save the settings object as an asset
             AssetDatabase.CreateAsset(settings, settingsPath);
             AssetDatabase.SaveAssets();
-            Logger.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
+            PackageLogger.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
         }
 
         return settings;

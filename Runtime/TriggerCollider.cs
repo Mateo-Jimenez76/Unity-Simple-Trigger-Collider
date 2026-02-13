@@ -28,19 +28,19 @@ public class TriggerCollider : MonoBehaviour
         switch (settings.GetDefaultColliderType())
         {
             case (ColliderType.Box):
-                Logger.Log("Added a BoxCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a BoxCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<BoxCollider>().isTrigger = true;
                 break;
             case (ColliderType.Sphere):
-                Logger.Log("Added a SphereCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a SphereCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<SphereCollider>().isTrigger = true;
                 break;
             case (ColliderType.Capsule):
-                Logger.Log("Added a CapsuleCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a CapsuleCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<CapsuleCollider>().isTrigger = true;
                 break;
             case (ColliderType.Mesh):
-                Logger.Log("Added a MeshCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                PackageLogger.Log("Added a MeshCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
                 gameObject.AddComponent<MeshCollider>().isTrigger = true;
                 break;
         }
