@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
-public void TriggerParticles : Monobehavior
+public class TriggerParticles : MonoBehaviour
 {
-    [SerializeField] private UnityEvent onParticleTrigger = new();
+    [SerializeField] private UnityEvent onParticleTriggerEnter = new();
     
 
     private new ParticleSystem particleSystem;
@@ -15,6 +15,9 @@ public void TriggerParticles : Monobehavior
         if(TryGetComponent<ParticleSystem>(out ParticleSystem system))
         {
             particleSystem = system;
+            var trigger = particleSystem.trigger;
+            trigger.enabled = true;
+            trigger.enter = ParticleSystemOverlapAction.Callback;
         } else
         {
             particleSystem = gameObject.AddComponent<ParticleSystem>();
@@ -32,7 +35,7 @@ public void TriggerParticles : Monobehavior
         //For each particle, invoke the event
         foreach (ParticleSystem.Particle particle in particles)
         {
-            onParticleTrigger.Invoke();
+            onParticleTriggerEnter.Invoke();
         }
     }
 }
