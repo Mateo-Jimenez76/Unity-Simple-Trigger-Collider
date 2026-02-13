@@ -1,3 +1,12 @@
+## [1.5.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.1...v1.5.2) (2026-02-13)
+
+
+### Bug Fixes
+
+* **Logger:** Instance needed to use non static type ([a8b9a3c](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/a8b9a3c4f2129c1e1c2a382ab67ce6597e0e3276))
+
+
+
 ## [1.5.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.0...v1.5.1) (2026-02-13)
 
 
@@ -34,15 +43,6 @@
 
 * **CustomSettings:** Implement logging control options ([1334c17](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/1334c17ea165a957f4e39cc61342f99812679d88))
 * **TriggerColliders:** Scripts now create missing colliders ([0ffe772](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/0ffe7722463cf4c9fa12d9b4e9ffb6fffc626b0b))
-
-
-
-# [1.3.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.2.0...v1.3.0) (2026-01-09)
-
-
-### Features
-
-* **TriggerColliders:** Add tooltips ([083fa88](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/083fa88e7dd4737be5904e2138560eb8dfa5a6b7))
 
 
 
