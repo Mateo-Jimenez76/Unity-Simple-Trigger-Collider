@@ -1,7 +1,3 @@
-using System.ComponentModel;
-using System.Net.NetworkInformation;
-using Unity.Android.Gradle.Manifest;
-using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.Events;
 using Collider2DType = CustomSettings.Collider2DType;
