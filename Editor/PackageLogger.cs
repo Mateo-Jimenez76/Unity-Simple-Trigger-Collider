@@ -1,44 +1,46 @@
-using UnityEditor;
 using UnityEngine;
 
-public static class PackageLogger
+namespace SimpleTriggerCollider.Editor
 {
-    public static void Log(string message)
+    public static class PackageLogger
     {
-        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
-        if (settings != null && settings.DebugLogsEnabled() == true) 
+        public static void Log(string message)
         {
-            Debug.Log(message);
-        } 
-        else
-        {
-            Debug.Log(message);
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            if (settings != null && settings.DebugLogsEnabled() == true)
+            {
+                Debug.Log(message);
+            }
+            else
+            {
+                Debug.Log(message);
+            }
         }
-    }
 
-    public static void LogWarning(string message)
-    {
-        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
-        if (settings != null && settings.WarningLogsEnabled() == true)
+        public static void LogWarning(string message)
         {
-            Debug.LogWarning(message);
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            if (settings != null && settings.WarningLogsEnabled() == true)
+            {
+                Debug.LogWarning(message);
+            }
+            else
+            {
+                Debug.LogWarning(message);
+            }
         }
-        else
-        {
-            Debug.LogWarning(message);
-        }
-    }
 
-    public static void LogError(string message)
-    {
-        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
-        if (settings != null && settings.ErrorLogsEnabled() == true)
+        public static void LogError(string message)
         {
-            Debug.LogError(message);
-        }
-        else
-        {
-            Debug.LogError(message);
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            if (settings != null && settings.ErrorLogsEnabled() == true)
+            {
+                Debug.LogError(message);
+            }
+            else
+            {
+                Debug.LogError(message);
+            }
         }
     }
 }

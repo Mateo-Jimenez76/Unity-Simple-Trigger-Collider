@@ -1,91 +1,94 @@
 using UnityEngine;
 using UnityEditor;
-public class CustomSettings : ScriptableObject
+namespace SimpleTriggerCollider.Editor
 {
-    // Path to the asset that will hold the settings information
-    // "Asset/Editor" restricts your ability to use these settings at runtime
-    // So "Assets/Resources" is a better location if runtime access is needed
-    public const string settingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
-
-    // --- Settings for your package ---
-    [SerializeField] private bool debugLogs;
-    public bool DebugLogsEnabled() => debugLogs;
-
-    [SerializeField] private bool warningLogs;
-    public bool WarningLogsEnabled() => warningLogs;
-
-    [SerializeField] private bool errorLogs;
-    public bool ErrorLogsEnabled() => errorLogs;
-
-    [SerializeField] private ColliderType defaultColliderType;
-    public ColliderType GetDefaultColliderType() => defaultColliderType;
-
-    [SerializeField] private Collider2DType defaultCollider2DType;
-    public Collider2DType GetDefaultCollider2DType() => defaultCollider2DType;
-
-    /// <summary>
-    /// Retrieves the existing custom settings asset if it exists; otherwise, creates a new settings asset with default
-    /// values and returns it.
-    /// </summary>
-    /// <remarks>If the settings asset does not exist at the expected path, this method creates the necessary
-    /// folder structure and a new settings asset with default values. The method ensures that a valid settings asset is
-    /// always returned, simplifying access to configuration data.</remarks>
-    /// <returns>A <see cref="CustomSettings"/> instance representing the current settings. If no settings asset exists, a new
-    /// one is created and returned.</returns>
-    internal static CustomSettings GetOrCreateSettings()
+    public class CustomSettings : ScriptableObject
     {
-        //Check that there is a valid location to store the settings.asset
-        //If not...
-        if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+        // Path to the asset that will hold the settings information
+        // "Asset/Editor" restricts your ability to use these settings at runtime
+        // So "Assets/Resources" is a better location if runtime access is needed
+        public const string settingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
+
+        // --- Settings for your package ---
+        [SerializeField] private bool debugLogs;
+        public bool DebugLogsEnabled() => debugLogs;
+
+        [SerializeField] private bool warningLogs;
+        public bool WarningLogsEnabled() => warningLogs;
+
+        [SerializeField] private bool errorLogs;
+        public bool ErrorLogsEnabled() => errorLogs;
+
+        [SerializeField] private ColliderType defaultColliderType;
+        public ColliderType GetDefaultColliderType() => defaultColliderType;
+
+        [SerializeField] private Collider2DType defaultCollider2DType;
+        public Collider2DType GetDefaultCollider2DType() => defaultCollider2DType;
+
+        /// <summary>
+        /// Retrieves the existing custom settings asset if it exists; otherwise, creates a new settings asset with default
+        /// values and returns it.
+        /// </summary>
+        /// <remarks>If the settings asset does not exist at the expected path, this method creates the necessary
+        /// folder structure and a new settings asset with default values. The method ensures that a valid settings asset is
+        /// always returned, simplifying access to configuration data.</remarks>
+        /// <returns>A <see cref="CustomSettings"/> instance representing the current settings. If no settings asset exists, a new
+        /// one is created and returned.</returns>
+        internal static CustomSettings GetOrCreateSettings()
         {
-            PackageLogger.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
-            //...Create the Resources folder
-            AssetDatabase.CreateFolder("Assets", "Resources");
+            //Check that there is a valid location to store the settings.asset
+            //If not...
+            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+            {
+                PackageLogger.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
+                //...Create the Resources folder
+                AssetDatabase.CreateFolder("Assets", "Resources");
+            }
+
+            //Try to load the settings asset
+            var settings = AssetDatabase.LoadAssetAtPath<CustomSettings>(settingsPath);
+
+            //If the settings asset does not exist...
+            if (settings == null)
+            {
+                //Create an instance of the settings object
+                settings = CreateInstance<CustomSettings>();
+
+                //Set default values for settings
+                settings.debugLogs = true;
+                settings.warningLogs = true;
+                settings.errorLogs = true;
+                settings.defaultColliderType = ColliderType.Box;
+                settings.defaultCollider2DType = Collider2DType.Box;
+
+                //Save the settings object as an asset
+                AssetDatabase.CreateAsset(settings, settingsPath);
+                AssetDatabase.SaveAssets();
+                PackageLogger.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
+            }
+
+            return settings;
         }
 
-        //Try to load the settings asset
-        var settings = AssetDatabase.LoadAssetAtPath<CustomSettings>(settingsPath);
-
-        //If the settings asset does not exist...
-        if (settings == null)
+        internal static SerializedObject GetSerializedSettings()
         {
-            //Create an instance of the settings object
-            settings = CreateInstance<CustomSettings>();
-
-            //Set default values for settings
-            settings.debugLogs = true;
-            settings.warningLogs = true;
-            settings.errorLogs = true;
-            settings.defaultColliderType = ColliderType.Box;
-            settings.defaultCollider2DType = Collider2DType.Box;
-
-            //Save the settings object as an asset
-            AssetDatabase.CreateAsset(settings, settingsPath);
-            AssetDatabase.SaveAssets();
-            PackageLogger.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
+            return new SerializedObject(GetOrCreateSettings());
         }
 
-        return settings;
-    }
+        public enum ColliderType
+        {
+            Box,
+            Sphere,
+            Capsule,
+            Mesh
+        }
 
-    internal static SerializedObject GetSerializedSettings()
-    {
-        return new SerializedObject(GetOrCreateSettings());
-    }
-
-    public enum ColliderType
-    {
-        Box,
-        Sphere,
-        Capsule,
-        Mesh
-    }
-
-    public enum Collider2DType
-    {
-        Box,
-        Circle,
-        Polygon,
-        Edge
+        public enum Collider2DType
+        {
+            Box,
+            Circle,
+            Polygon,
+            Edge
+        }
     }
 }

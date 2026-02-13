@@ -1,66 +1,68 @@
 using UnityEngine;
 using UnityEngine.Events;
-using ColliderType = CustomSettings.ColliderType;
-
-#if !HAS_HEALTH_SYSTEM
-[RequireComponent(typeof(Collider))]
-public class TriggerCollider : MonoBehaviour
+using SimpleTriggerCollider.Editor;
+using ColliderType = SimpleTriggerCollider.Editor.CustomSettings.ColliderType;
+namespace SimpleTriggerCollider.Runtime
 {
-    // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
-    // This can be useful for debugging especially when multiple triggers are in a scene
-    [SerializeField] private UnityEvent<Collider,GameObject> onTriggerEnter;
-    [SerializeField] private UnityEvent<Collider,GameObject> onTriggerStay;
-    [SerializeField] private UnityEvent<Collider,GameObject> onTriggerExit;
-    
-    public void OnValidate()
+#if !HAS_HEALTH_SYSTEM
+    [RequireComponent(typeof(Collider))]
+    public class TriggerCollider : MonoBehaviour
     {
-        //Check if a collider2D exists on the game object.
-        if (TryGetComponent<Collider>(out Collider collider2D))
+        // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
+        // This can be useful for debugging especially when multiple triggers are in a scene
+        [SerializeField] private UnityEvent<Collider, GameObject> onTriggerEnter;
+        [SerializeField] private UnityEvent<Collider, GameObject> onTriggerStay;
+        [SerializeField] private UnityEvent<Collider, GameObject> onTriggerExit;
+
+        public void OnValidate()
         {
-            //If one exists, then skip the rest of the function.
-            return;
+            //Check if a collider2D exists on the game object.
+            if (TryGetComponent<Collider>(out Collider collider2D))
+            {
+                //If one exists, then skip the rest of the function.
+                return;
+            }
+
+            //Load Package Settings
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+
+            //Check for what kind of Collider2D to create
+            switch (settings.GetDefaultColliderType())
+            {
+                case (ColliderType.Box):
+                    PackageLogger.Log("Added a BoxCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<BoxCollider>().isTrigger = true;
+                    break;
+                case (ColliderType.Sphere):
+                    PackageLogger.Log("Added a SphereCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<SphereCollider>().isTrigger = true;
+                    break;
+                case (ColliderType.Capsule):
+                    PackageLogger.Log("Added a CapsuleCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<CapsuleCollider>().isTrigger = true;
+                    break;
+                case (ColliderType.Mesh):
+                    PackageLogger.Log("Added a MeshCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<MeshCollider>().isTrigger = true;
+                    break;
+            }
         }
 
-        //Load Package Settings
-        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
-
-        //Check for what kind of Collider2D to create
-        switch (settings.GetDefaultColliderType())
+        private void OnTriggerEnter(Collider collision)
         {
-            case (ColliderType.Box):
-                PackageLogger.Log("Added a BoxCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<BoxCollider>().isTrigger = true;
-                break;
-            case (ColliderType.Sphere):
-                PackageLogger.Log("Added a SphereCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<SphereCollider>().isTrigger = true;
-                break;
-            case (ColliderType.Capsule):
-                PackageLogger.Log("Added a CapsuleCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<CapsuleCollider>().isTrigger = true;
-                break;
-            case (ColliderType.Mesh):
-                PackageLogger.Log("Added a MeshCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<MeshCollider>().isTrigger = true;
-                break;
+            onTriggerEnter.Invoke(collision, gameObject);
+        }
+
+        private void OnTriggerStay(Collider collision)
+        {
+            onTriggerStay.Invoke(collision, gameObject);
+        }
+
+        private void OnTriggerExit(Collider collision)
+        {
+            onTriggerExit.Invoke(collision, gameObject);
         }
     }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        onTriggerEnter.Invoke(collision, gameObject);
-    }
-
-    private void OnTriggerStay(Collider collision)
-    {
-        onTriggerStay.Invoke(collision, gameObject);
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        onTriggerExit.Invoke(collision, gameObject);
-    }
-}
 #endif
 
 #if HAS_HEALTH_SYSTEM
@@ -181,4 +183,4 @@ public class TriggerCollider : MonoBehaviour
     }
 }
 #endif
-
+}

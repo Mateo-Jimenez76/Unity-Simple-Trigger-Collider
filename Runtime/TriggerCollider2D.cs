@@ -1,66 +1,68 @@
 using UnityEngine;
 using UnityEngine.Events;
-using Collider2DType = CustomSettings.Collider2DType;
-
-#if !HAS_HEALTH_SYSTEM
-[RequireComponent(typeof(Collider2D))]
-public class TriggerCollider2D : MonoBehaviour
+using SimpleTriggerCollider.Editor;
+using Collider2DType = SimpleTriggerCollider.Editor.CustomSettings.Collider2DType;
+namespace SimpleTriggerCollider.Runtime
 {
-    // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
-    // This can be useful for debugging especially when multiple triggers are in a scene
-    [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerEnter;
-    [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerStay;
-    [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerExit;
-
-    public void OnValidate()
+#if !HAS_HEALTH_SYSTEM
+    [RequireComponent(typeof(Collider2D))]
+    public class TriggerCollider2D : MonoBehaviour
     {
-        //Check if a collider2D exists on the game object.
-        if (TryGetComponent<Collider2D>(out Collider2D collider2D)) 
+        // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
+        // This can be useful for debugging especially when multiple triggers are in a scene
+        [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerEnter;
+        [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerStay;
+        [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerExit;
+
+        public void OnValidate()
         {
-            //If one exists, then skip the rest of the function.
-            return;
+            //Check if a collider2D exists on the game object.
+            if (TryGetComponent<Collider2D>(out Collider2D collider2D))
+            {
+                //If one exists, then skip the rest of the function.
+                return;
+            }
+
+            //Load Package Settings
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+
+            //Check for what kind of Collider2D to create
+            switch (settings.GetDefaultCollider2DType())
+            {
+                case (Collider2DType.Box):
+                    PackageLogger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
+                    break;
+                case (Collider2DType.Circle):
+                    PackageLogger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
+                    break;
+                case (Collider2DType.Polygon):
+                    PackageLogger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
+                    break;
+                case (Collider2DType.Edge):
+                    PackageLogger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
+                    gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
+                    break;
+            }
         }
 
-        //Load Package Settings
-        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
-
-        //Check for what kind of Collider2D to create
-        switch (settings.GetDefaultCollider2DType())
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            case (Collider2DType.Box):
-                PackageLogger.Log("Added a BoxCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
-                break;
-            case (Collider2DType.Circle):
-                PackageLogger.Log("Added a CircleCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
-                break;
-            case (Collider2DType.Polygon):
-                PackageLogger.Log("Added a PolygonCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
-                break;
-            case (Collider2DType.Edge):
-                PackageLogger.Log("Added a EdgeCollider2D component because TriggerCollider2D.cs depends on a Collider2D component being present. You can change this behavior in the package's settings.");
-                gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
-                break;
+            onTriggerEnter.Invoke(collision, gameObject);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            onTriggerStay.Invoke(collision, gameObject);
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            onTriggerExit.Invoke(collision, gameObject);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        onTriggerEnter.Invoke(collision, gameObject);
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        onTriggerStay.Invoke(collision, gameObject);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        onTriggerExit.Invoke(collision, gameObject);
-    }
-}
 #endif
 
 #if HAS_HEALTH_SYSTEM
@@ -181,4 +183,5 @@ public class TriggerCollider2D : MonoBehaviour
     }
 }
 #endif
+}
 
