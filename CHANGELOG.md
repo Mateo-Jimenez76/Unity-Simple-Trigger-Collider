@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.2...v1.6.0) (2026-02-13)
+
+
+### Features
+
+* Trigger particles ([48afe2f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/48afe2f3376eee8aa28234df4aac75ac361716a4))
+
+
+
 ## [1.5.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.1...v1.5.2) (2026-02-13)
 
 
@@ -33,16 +42,6 @@
 * **CustomSettings:** Always creating new Assets/Resources folder ([f0b82e5](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/f0b82e5be66527ff9d29af0a5a4083b84d0ce2ce))
 * **CustomSettings:** Null reference error when opening settings for first time. ([6367335](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6367335c0d755c235b65306af0d7ff10ca780f72))
 * **CustomSettings:** Null references when loading settings ([6ab8d28](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6ab8d28adee3698b7037216c3abcfc71f5d4acc6))
-
-
-
-# [1.4.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.3.0...v1.4.0) (2026-01-10)
-
-
-### Features
-
-* **CustomSettings:** Implement logging control options ([1334c17](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/1334c17ea165a957f4e39cc61342f99812679d88))
-* **TriggerColliders:** Scripts now create missing colliders ([0ffe772](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/0ffe7722463cf4c9fa12d9b4e9ffb6fffc626b0b))
 
 
 
