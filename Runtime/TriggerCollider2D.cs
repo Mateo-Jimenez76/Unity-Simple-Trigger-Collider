@@ -5,7 +5,6 @@ using Collider2DType = SimpleTriggerCollider.Editor.CustomSettings.Collider2DTyp
 namespace SimpleTriggerCollider.Runtime
 {
 #if !HAS_HEALTH_SYSTEM
-    [RequireComponent(typeof(Collider2D))]
     public class TriggerCollider2D : MonoBehaviour
     {
         // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
@@ -46,6 +45,7 @@ namespace SimpleTriggerCollider.Runtime
                     gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
                     break;
             }
+            Debug.Log("No Collider2D component was found on " + gameObject.name + " so one was added automatically. This is required for TriggerCollider2D to work. You can change this behavior in the package's settings.");
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -66,7 +66,6 @@ namespace SimpleTriggerCollider.Runtime
 #endif
 
 #if HAS_HEALTH_SYSTEM
-[RequireComponent(typeof(Collider2D))]
 public class TriggerCollider2D : MonoBehaviour
 {
     [SerializeField] private UnityEvent<Collider2D,GameObject> onTriggerEnterCollider2D;
@@ -117,6 +116,7 @@ public class TriggerCollider2D : MonoBehaviour
                 gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
                 break;
         }
+        Debug.Log("No Collider2D component was found on " + gameObject.name + " so one was added automatically. This is required for TriggerCollider2D to work. You can change this behavior in the package's settings.");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

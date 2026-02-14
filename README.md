@@ -52,7 +52,7 @@ A component of type Collider(2D) is required by the script. If one is not alread
 >[!TIP]
 > The Collider(2D) that is created by default can be changed in the settings menu of the package found in "Edit/Project Settings/Simple Trigger Colliders"
 
-Once a component of type Collider is added it cannot be removed (if it is the only Collider(2D) on the game object) due to the effect of [RequireComponent(typeof(Collider))](https://docs.unity3d.com/ScriptReference/Collider.html). This is done to prevent the script from breaking as it relies on the precense of a Collider(2D) component.
+Once a component of type Collider(2D) is added it cannot be removed if it is the only Collider(2D) on the game object. If it does get removed than another Collider(2D) will be added to the object(only works in edit more). This is done to prevent the script from breaking as it relies on the precense of a Collider(2D) component.
 
 ### Using The Defined Unity Events
 

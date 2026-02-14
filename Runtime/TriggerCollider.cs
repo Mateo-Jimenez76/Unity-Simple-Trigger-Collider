@@ -5,7 +5,6 @@ using ColliderType = SimpleTriggerCollider.Editor.CustomSettings.ColliderType;
 namespace SimpleTriggerCollider.Runtime
 {
 #if !HAS_HEALTH_SYSTEM
-    [RequireComponent(typeof(Collider))]
     public class TriggerCollider : MonoBehaviour
     {
         // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
@@ -46,6 +45,7 @@ namespace SimpleTriggerCollider.Runtime
                     gameObject.AddComponent<MeshCollider>().isTrigger = true;
                     break;
             }
+            Debug.Log("No Collider component was found on " + gameObject.name + " so one was added automatically. This is required for TriggerCollider to work. You can change this behavior in the package's settings.");
         }
 
         private void OnTriggerEnter(Collider collision)
@@ -66,7 +66,6 @@ namespace SimpleTriggerCollider.Runtime
 #endif
 
 #if HAS_HEALTH_SYSTEM
-[RequireComponent(typeof(Collider))]
 public class TriggerCollider : MonoBehaviour
 {
     [SerializeField] private UnityEvent<Collider,GameObject> onTriggerEnterCollider;
@@ -117,6 +116,7 @@ public class TriggerCollider : MonoBehaviour
                 gameObject.AddComponent<MeshCollider>().isTrigger = true;
                 break;
         }
+        Debug.Log("No Collider component was found on " + gameObject.name + " so one was added automatically. This is required for TriggerCollider to work. You can change this behavior in the package's settings.");
     }
 
     private void OnTriggerEnter(Collider collision)
