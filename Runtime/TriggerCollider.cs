@@ -13,8 +13,15 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private UnityEvent<Collider, GameObject> onTriggerStay;
         [SerializeField] private UnityEvent<Collider, GameObject> onTriggerExit;
 
-        public void OnValidate()
+        private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
+
+        private void _OnValidate()
         {
+            if (this == null)
+            {
+                return;
+            }
+
             //Check if a collider2D exists on the game object.
             if (TryGetComponent<Collider>(out Collider collider2D))
             {
@@ -84,8 +91,15 @@ public class TriggerCollider : MonoBehaviour
 
     [SerializeField] private int damageAmount = 10;
 
-    public void OnValidate()
+    private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
+
+    private void _OnValidate()
     {
+         if(this == null)
+         {
+            return;
+         }
+
         //Check if a collider2D exists on the game object.
         if (TryGetComponent<Collider>(out Collider collider2D))
         {

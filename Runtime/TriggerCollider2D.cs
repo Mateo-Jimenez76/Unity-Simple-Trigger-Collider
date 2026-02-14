@@ -13,8 +13,15 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerStay;
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerExit;
 
-        public void OnValidate()
+        private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
+
+        private void _OnValidate()
         {
+            if(this == null)
+            {
+                return;
+            }
+
             //Check if a collider2D exists on the game object.
             if (TryGetComponent<Collider2D>(out Collider2D collider2D))
             {
@@ -23,7 +30,7 @@ namespace SimpleTriggerCollider.Runtime
             }
 
             //Load Package Settings
-            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings");
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings"); 
 
             //Check for what kind of Collider2D to create
             switch (settings.GetDefaultCollider2DType())
@@ -84,7 +91,7 @@ public class TriggerCollider2D : MonoBehaviour
 
     [SerializeField] private int damageAmount = 10;
 
-    public void OnValidate()
+    private void OnValidate()
     {
         //Check if a collider2D exists on the game object.
         if (TryGetComponent<Collider2D>(out Collider2D collider2D)) 
