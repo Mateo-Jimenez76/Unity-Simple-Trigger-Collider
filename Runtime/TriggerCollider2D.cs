@@ -25,7 +25,7 @@ namespace SimpleTriggerCollider.Runtime
             //Check if a collider2D exists on the game object.
             if (TryGetComponent<Collider2D>(out Collider2D collider2D))
             {
-                //If one exists, then skip the rest of the function.
+                collider2D.isTrigger = true; //Ensure that the collider is set to be a trigger
                 return;
             }
 
@@ -96,7 +96,7 @@ public class TriggerCollider2D : MonoBehaviour
         //Check if a collider2D exists on the game object.
         if (TryGetComponent<Collider2D>(out Collider2D collider2D)) 
         {
-            //If one exists, then skip the rest of the function.
+            collider2D.isTrigger = true; //Ensure that the collider is set to be a trigger
             return;
         }
 
