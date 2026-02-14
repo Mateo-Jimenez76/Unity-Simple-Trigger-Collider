@@ -23,7 +23,7 @@ namespace SimpleTriggerCollider.Runtime
             }
 
             //Load Package Settings
-            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            var settings = Resources.Load<CustomSettings>(CustomSettings.settingsPath);
 
             //Check for what kind of Collider2D to create
             switch (settings.GetDefaultColliderType())
@@ -94,7 +94,7 @@ public class TriggerCollider : MonoBehaviour
         }
 
         //Load Package Settings
-        var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+        var settings = Resources.Load<CustomSettings>(CustomSettings.settingsPath);
 
         //Check for what kind of Collider2D to create
         switch (settings.GetDefaultColliderType())
