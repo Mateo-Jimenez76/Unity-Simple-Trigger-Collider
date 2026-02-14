@@ -1,3 +1,13 @@
+## [1.6.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.6.0...v1.6.1) (2026-02-14)
+
+
+### Bug Fixes
+
+* **Custom Settings:** Null reference until opening settings menu for first time ([3ee7098](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/3ee7098238f0d7d15bcbfbbae89673a3144842a0))
+* **Trigger Colliders:** Missing reference to custom settings instance ([4688b76](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/4688b766abfaea388f7b5d88a31e388995e548c1))
+
+
+
 # [1.6.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.2...v1.6.0) (2026-02-13)
 
 
@@ -31,17 +41,6 @@
 ### Features
 
 * **CustomSettings:** Add tooltips to package settings ([7923dca](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/7923dca3de6c53ae0cc61c4f5b197b939352a821))
-
-
-
-## [1.4.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.4.0...v1.4.1) (2026-01-10)
-
-
-### Bug Fixes
-
-* **CustomSettings:** Always creating new Assets/Resources folder ([f0b82e5](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/f0b82e5be66527ff9d29af0a5a4083b84d0ce2ce))
-* **CustomSettings:** Null reference error when opening settings for first time. ([6367335](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6367335c0d755c235b65306af0d7ff10ca780f72))
-* **CustomSettings:** Null references when loading settings ([6ab8d28](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6ab8d28adee3698b7037216c3abcfc71f5d4acc6))
 
 
 
