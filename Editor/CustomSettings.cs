@@ -90,5 +90,14 @@ namespace SimpleTriggerCollider.Editor
             Polygon,
             Edge
         }
+
+        private class Initializer : AssetPostprocessor
+        {
+            static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
+            {
+                //Ensure that the settings asset exists and is up to date
+                GetOrCreateSettings();
+            }
+        }
     }
 }
