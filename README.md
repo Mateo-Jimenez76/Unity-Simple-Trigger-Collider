@@ -17,6 +17,10 @@ And then later replace these functions with more polished and fine tuned version
 - LogCollision2D(Collider2D collision)
 - LogCollision(Collider collision)
 
+>[!NOTE]
+> The 2D/3D versions of functions will only appear when being used with their corresponding trigger colliders. 
+> Thus it is impossible to use LogCollision(Collider collision), for example, with a TriggerCollider2D component
+
 ### Simple Health System Compatibility
 
 This package has built in support for the [Simple Health System Package](https://github.com/Mateo-Jimenez76/Unity-Health-Script).
@@ -73,10 +77,67 @@ The first option is fairly simple, assign the object, pick the function you wish
 In order to use the Collider(2D) that is passed automatically to functions called by the events, the function must only take in one parameter 
 and that one parameter must be a Collider(2D).
 
+### Unity Event Execution Order
+
+The execution order of functions listed within any given UnityEvent is relatively unknown, and thus it cannot be relied on. For example,
+
+<img width="674" height="388" alt="UnityEvent Execution Example" src="https://github.com/user-attachments/assets/52f48d95-1492-4cab-9935-b24cc4128077" />
+
+looking at the above image it would make sense that the object would...
+
+1. Play a sound named "pickupCoin"
+2. Play a Particle System effect
+3. Log the collision
+4. Deactivate the object
+
+...all in that order when something enters its trigger collider. However when testing, the observed execution order is as follows
+
+1. Log the collision
+2. Deactivate the object
+
+The sound and particle effect functions are ignored because those two components are on the object.
+And since the object is now innactive the functions have no effect.
+
+> [!NOTE]
+> To read more about what an object being "innactive", "disabled", or "deactivated" means visit the official Unity documentation on [GameObject.SetActive](https://docs.unity3d.com/6000.3/Documentation/ScriptReference/GameObject.SetActive.html) 
+
+<b>Solution 1</b>
+
+You can move functionality away from the object that gets deactivated thus allowing the functions to have their effects go though.
+
+> [!NOTE]
+> Every function in a UnityEvent is called whether or not the invoking object becomes innactive due to one of those calls. Through personal investigations it would appear that the functions are called nearly at the same time, possibly [asynchronously](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/).
+
+<b>Solution 2</b>
+
+You can also take advantage of the OnTriggerStay and OnTriggerExit events. These events DO have an explicit execution order relative to each other that goes as follows
+
+1. OnTriggerEnter
+2. OnTriggerStay
+3. OnTriggerExit
+
+Thus we can move the SetActive(false) function call to OnTriggerStay to ensure that all other functions are called before we deactivate the object.
+
+<b>Solution 3</b>
+
+You can move the functionality into your own custom functions, thus allowing you to more directly control execution order and functionality.
+Although this takes more work I do recommened it, once you are past initial testing and prototyping, as you can implement [error handling](https://www.geeksforgeeks.org/dsa/error-handling-in-programming/) and [conditional operations](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators) to make more robust and full proof products.
+
 ### Using The Common Use Case Functions
 
-In order to use the functions, place the CommonUseCaseFunctions scriptable object found at /SimpleTriggerCollider/Runtime/CommonUseCase in the object field of the Unity Event you wish to use the function in. Then select the corresponding function you wish to use. \
-The reason for the use of a scriptable object is to circumvent the limitation that UnityEvents can only call functions from object references and not scripts. You cannot create this scriptable object nor does it have any parameters in the inspector to change.
+In order to use the functions, you must first create the scriptable object in your project.
+1. Right click and go to Create/SimpleTriggerColliders/CummonUseCaseFunctions to create the scriptable object at the current path in your project
+2. Drag the scriptable object into the object field of the [UnityEvent](https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Events.UnityEvent.html)
+3. Select the function you wish to use
+4. And done :D
+
+> [!NOTE]
+> The reason for the use of a scriptable object is to circumvent the limitation that UnityEvents can only call functions from object references and not scripts.
+
+Another method of using these functions is directly through code. You can reference the functions by making a reference to CommonUseCaseFunctions.[Function Name] as all functions are static.
+
+
+
 
 
 
