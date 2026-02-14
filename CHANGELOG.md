@@ -1,3 +1,12 @@
+## [1.6.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.6.1...v1.6.2) (2026-02-14)
+
+
+### Bug Fixes
+
+* **Trigger Collider:** SendMessage cannot be called during OnValidate ([93dd67e](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/93dd67eb7dbd055a143a497c99544d6c9482d147))
+
+
+
 ## [1.6.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.6.0...v1.6.1) (2026-02-14)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * **TriggerCollider2D:** Remove unneeded namespaces ([f2bd6e1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/f2bd6e133fcec31df817256f1dc948e27c4f6be5))
-
-
-
-# [1.5.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.4.1...v1.5.0) (2026-01-11)
-
-
-### Features
-
-* **CustomSettings:** Add tooltips to package settings ([7923dca](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/7923dca3de6c53ae0cc61c4f5b197b939352a821))
 
 
 
