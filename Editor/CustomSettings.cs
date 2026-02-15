@@ -40,7 +40,7 @@ namespace SimpleTriggerCollider.Editor
             //If not...
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
             {
-                PackageLogger.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
+                Debug.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
                 //...Create the Resources folder
                 AssetDatabase.CreateFolder("Assets", "Resources");
             }
@@ -64,7 +64,7 @@ namespace SimpleTriggerCollider.Editor
                 //Save the settings object as an asset
                 AssetDatabase.CreateAsset(settings, settingsPath);
                 AssetDatabase.SaveAssets();
-                PackageLogger.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
+                Debug.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
             }
 
             return settings;
@@ -91,12 +91,12 @@ namespace SimpleTriggerCollider.Editor
             Edge
         }
 
-        private class Initializer : AssetPostprocessor
+        public class Initializer : AssetPostprocessor
         {
             static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
             {
                 //Ensure that the settings asset exists and is up to date
-                GetOrCreateSettings();
+                CustomSettings.GetOrCreateSettings();
             }
         }
     }

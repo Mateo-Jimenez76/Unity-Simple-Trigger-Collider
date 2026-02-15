@@ -1,6 +1,7 @@
+using SimpleTriggerCollider.Editor;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using SimpleTriggerCollider.Editor;
 namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
 {
     [CreateAssetMenu(fileName = "CommonUseCaseFunctions", menuName = "SimpleTriggerColliders/Common Use Case Functions")]
@@ -60,6 +61,32 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         public static void LogCollision(Collider2D collision, GameObject caller)
         {
             PackageLogger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+        }
+
+
+        public class Initializer : AssetPostprocessor
+        {
+            static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
+            {
+                //Check that there is a valid location
+                if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                {
+                    Debug.LogWarning("Created Resources folder for 'Common Use Case Functions'");
+                    //...Create the Resources folder
+                    AssetDatabase.CreateFolder("Assets", "Resources");
+                }
+
+                //Try to load the settings asset
+                var UseCaseFunctions = AssetDatabase.LoadAssetAtPath<CommonUseCaseFunctions>("Assets/Resources/CommonUseCaseFunctions.asset");
+
+                //If the settings asset does not exist...
+                if (UseCaseFunctions == null)
+                {
+                    Debug.LogWarning("Created 'Common Use Case Functions' asset at Assets/Resources/CommonUseCaseFunctions.asset");
+                    UseCaseFunctions = ScriptableObject.CreateInstance<CommonUseCaseFunctions>();
+                    AssetDatabase.CreateAsset(UseCaseFunctions, "Assets/Resources/CommonUseCaseFunctions.asset");
+                }
+            }
         }
     }
 }

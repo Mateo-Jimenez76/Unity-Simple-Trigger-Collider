@@ -6,7 +6,7 @@ namespace SimpleTriggerCollider.Editor
     {
         public static void Log(string message)
         {
-            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings");
             if (settings != null && settings.DebugLogsEnabled() == true)
             {
                 Debug.Log(message);
@@ -19,7 +19,7 @@ namespace SimpleTriggerCollider.Editor
 
         public static void LogWarning(string message)
         {
-            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings");
             if (settings != null && settings.WarningLogsEnabled() == true)
             {
                 Debug.LogWarning(message);
@@ -32,7 +32,7 @@ namespace SimpleTriggerCollider.Editor
 
         public static void LogError(string message)
         {
-            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings.asset");
+            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings");
             if (settings != null && settings.ErrorLogsEnabled() == true)
             {
                 Debug.LogError(message);
