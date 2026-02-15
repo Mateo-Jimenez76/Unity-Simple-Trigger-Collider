@@ -12,12 +12,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "com.mateojimenez.healthsystem",
-            "expression": "3.0.0",
-            "define": "HAS_HEALTH_SYSTEM"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }

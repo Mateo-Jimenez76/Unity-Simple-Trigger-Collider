@@ -1,4 +1,3 @@
-#if !HAS_HEALTH_SYSTEM
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using SimpleTriggerCollider.Editor;
@@ -64,4 +63,3 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         }
     }
 }
-#endif
