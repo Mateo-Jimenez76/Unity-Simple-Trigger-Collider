@@ -42,6 +42,39 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         }
 
         /// <summary>
+        /// Deactivates the trigger associated with the specified collider when a collision occurs.
+        /// </summary>
+        /// <remarks>If the specified collider does not have a TriggerCollider component, no action is
+        /// taken. This method logs the deactivation event for diagnostic purposes.</remarks>
+        /// <param name="collision">The collider involved in the collision. Must contain a TriggerCollider component to be deactivated.</param>
+        /// <param name="caller">The game object that initiated the collision event.</param>
+        public void DeactivateTrigger(Collider collision, GameObject caller)
+        {
+            if(collision.TryGetComponent<TriggerCollider>(out TriggerCollider triggerCollider))
+            {
+                triggerCollider.enabled = false;
+                PackageLogger.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
+            }
+            else
+            {
+                PackageLogger.LogWarning("No TriggerCollider component found on " + caller.name + ". No trigger deactivated.");
+            }
+        }
+
+        public void DeactivateTrigger(Collider2D collision, GameObject caller)
+        {
+            if(collision.TryGetComponent<TriggerCollider2D>(out TriggerCollider2D triggerCollider))
+            {
+                triggerCollider.enabled = false;
+                PackageLogger.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
+            }
+            else
+            {
+                PackageLogger.LogWarning("No TriggerCollider2D component found on " + caller.name + ". No trigger deactivated.");
+            }
+        }
+
+        /// <summary>
         /// Logs collision information to the console. The intended purpose is to be used as a
         /// dynamic function, meaning that the parameters get their data from UnityEvent<Collider,GameObject> automatically.
         /// </summary>
