@@ -21,6 +21,12 @@ namespace SimpleTriggerCollider.Runtime
                 return;
             }
 
+            if(TryGetComponent<Collider>(out Collider collider))
+            {
+                PackageLogger.LogError("A Collider component was found on " + gameObject.name + ". TriggerCollider2D.cs is designed to work with Collider2D components only, and this issue cannot be resolved automatically. Please manually remove the Collider and replace it with a Collider2D.");
+                return;
+            }
+
             //Check if a collider2D exists on the game object.
             if (TryGetComponent<Collider2D>(out Collider2D collider2D))
             {
