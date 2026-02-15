@@ -31,4 +31,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.linearVelocity = new Vector2(_horizontalInput, _verticalInput) * _moveSpeed;
     }
+
+    public void SetSpeed(float speed)
+    {
+        _moveSpeed = speed;
+    }
 }
