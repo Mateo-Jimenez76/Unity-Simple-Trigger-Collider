@@ -22,6 +22,7 @@
 |-------------|---------|
 | TriggerCollider2D | Listens for OnTrigger2D functions and invokes the corresponding UnityEvent |
 | TriggerCollider | Listens for OnTrigger functions and invokes the corresponding UnityEvent |
+| TriggerParticle | Invokes an event when a particle enters a collider marked as trigger |
 
 ### Common Use Case Functions
 I have included a scriptable object that contains a handful of helpful functions that are often used in the context of trigger colliders.
@@ -128,6 +129,7 @@ Although this takes more work I do recommened it, once you are past initial test
 > The reason for the use of a scriptable object is to circumvent the limitation that UnityEvents can only call functions from object references and not scripts.
 
 Another method of using these functions is directly through code. You can use the functions by making a reference to CommonUseCaseFunctions.[Function Name] as all functions are static.
+
 
 
 
