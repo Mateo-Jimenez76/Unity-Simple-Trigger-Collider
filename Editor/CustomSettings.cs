@@ -9,7 +9,7 @@ namespace SimpleTriggerCollider.Editor
         // So "Assets/Resources" is a better location if runtime access is needed
         public const string settingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
 
-        // --- Settings for your package ---
+        // --- Package Settings ---
         [SerializeField] private bool debugLogs;
         public bool DebugLogsEnabled() => debugLogs;
 
@@ -31,7 +31,7 @@ namespace SimpleTriggerCollider.Editor
         /// </summary>
         /// <remarks>If the settings asset does not exist at the expected path, this method creates the necessary
         /// folder structure and a new settings asset with default values. The method ensures that a valid settings asset is
-        /// always returned, simplifying access to configuration data.</remarks>
+        /// always returned.</remarks>
         /// <returns>A <see cref="CustomSettings"/> instance representing the current settings. If no settings asset exists, a new
         /// one is created and returned.</returns>
         internal static CustomSettings GetOrCreateSettings()
@@ -40,7 +40,7 @@ namespace SimpleTriggerCollider.Editor
             //If not...
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
             {
-                Debug.LogWarning("Created Resources folder for Simple Trigger Collider settings at Assets/Resources");
+                Debug.LogWarning("<color=yellow>Created Resources folder</color> for Simple Trigger Collider settings at <color=cyan>Assets/Resources</color>");
                 //...Create the Resources folder
                 AssetDatabase.CreateFolder("Assets", "Resources");
             }
@@ -64,7 +64,7 @@ namespace SimpleTriggerCollider.Editor
                 //Save the settings object as an asset
                 AssetDatabase.CreateAsset(settings, settingsPath);
                 AssetDatabase.SaveAssets();
-                Debug.LogWarning("Created Simple Trigger Collider settings object at: " + settingsPath);
+                Debug.LogWarning($"<color=yellow>Created Simple Trigger Collider settings object</color> at: <color=cyan>{settingsPath}</color>");
             }
 
             return settings;

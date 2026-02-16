@@ -21,16 +21,18 @@ namespace SimpleTriggerCollider.Runtime
                 return;
             }
 
-            if (TryGetComponent<Collider2D>(out Collider2D collider2D))
-            {
-                PackageLogger.LogError("A Collider2D component was found on " + gameObject.name + ". TriggerCollider.cs is designed to work with Collider2D components only, and this issue cannot be resolved automatically. Please manually remove the Collider2D and replace it with a Collider.");
-                return;
-            }
-
-            //Check if a collider2D exists on the game object.
             if (TryGetComponent<Collider>(out Collider collider))
             {
                 collider.isTrigger = true; //Ensure that the collider is set to be a trigger
+                return;
+            }
+
+            PackageLogger.Log($"No Collider component found on {gameObject.name}. Attempting to add default Collider...");
+
+            //If there is no Collider component, check for a Collider2D component. 
+            if (TryGetComponent<Collider2D>(out Collider2D collider2D))
+            {
+                PackageLogger.LogWarning($"A <color=lime>Collider2D</color> component was found on {gameObject.name}! <color=yellow>Cannot automatically add a defaul Collider. Please remove the <color=lime>Collider2D</color> and manually add a Collider.</color>");
                 return;
             }
 
@@ -41,23 +43,22 @@ namespace SimpleTriggerCollider.Runtime
             switch (settings.GetDefaultColliderType())
             {
                 case (ColliderType.Box):
-                    PackageLogger.Log("Added a BoxCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("Added a <color=lime>BoxCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<BoxCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Sphere):
-                    PackageLogger.Log("Added a SphereCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("Added a <color=lime>SphereCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<SphereCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Capsule):
-                    PackageLogger.Log("Added a CapsuleCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("Added a <color=lime>CapsuleCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<CapsuleCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Mesh):
-                    PackageLogger.Log("Added a MeshCollider component because TriggerCollider.cs depends on a Collider component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("Added a <color=lime>MeshCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<MeshCollider>().isTrigger = true;
                     break;
             }
-            Debug.Log("No Collider component was found on " + gameObject.name + " so one was added automatically. This is required for TriggerCollider to work. You can change this behavior in the package's settings.");
         }
 
         private void OnTriggerEnter(Collider collision)
