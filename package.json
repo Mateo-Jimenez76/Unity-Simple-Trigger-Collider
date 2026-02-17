@@ -11,6 +11,25 @@
   {
     "com.unity.cinemachine": "3.1.5"
   },
+  "samples": 
+  [
+    {
+      "displayName": "Collectible Item",
+      "description": "Contains a sample scene showcasing how to use the trigger collider to create a collectible item.",
+      "path": "Samples/Collectible Item"
+    },
+    {
+      "displayName": "Enemy Alert",
+      "description": "Contains a sample scene showcasing how to use the trigger collider to create an enemy alert.",
+      "path": "Samples/Enemy Alert"
+    },
+    {
+      "displayName": "Speed Boost",
+      "description": "Contains a sample scene showcasing how to use the trigger collider to create a speed boost.",
+      "path": "Samples/Speed Boost"
+    }
+  ],
+
   "keywords": [
     "Colliders",
     "Trigger",

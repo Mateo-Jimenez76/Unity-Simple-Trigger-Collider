@@ -1,19 +1,20 @@
 using UnityEngine;
-
+using TMPro;
 namespace SimpleTriggerColliders.Demo
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] float speed = 5f;
-        [SerializeField] GameObject agroIndicator; // Optional: A visual indicator for when the enemy is agro
+        [SerializeField] TextMeshProUGUI agroIndicator;
 
         private bool isAgro = false;
         private Rigidbody2D rb;
         private Transform target;
         private void Awake()
         {
-            agroIndicator?.SetActive(false); // Ensure the agro indicator is off at the start
+            //Make sure the indicator is blank
+            agroIndicator.text = "";
 
             rb = GetComponent<Rigidbody2D>();
 
@@ -29,7 +30,7 @@ namespace SimpleTriggerColliders.Demo
         {
             if (isAgro)
             {
-                agroIndicator?.SetActive(true);
+                agroIndicator.text = "!";
                 // Move towards the target
                 Vector2 direction = (target.position - transform.position).normalized;
                 rb.linearVelocity = direction * speed;
