@@ -36,7 +36,8 @@ namespace SimpleTriggerCollider.Runtime
                     }
                     continue;
                 }
-                Debug.LogWarning($"Multiple <color=lime>{nameof(Collider)}</color> components were found on <color=cyan>{gameObject.name}</color>. To prevent unintended behavior this script will not automatically assign one as a trigger, please do so manually.");
+                Debug.LogError($"Multiple <color=lime>{nameof(Collider)}</color> components were found on <color=cyan>{gameObject.name}</color>. <color=yellow>To prevent unintended behavior this script</color> will not automatically assign one as a trigger, <color=red>please do so manually.</color>");
+                return;
             }
             else
             {
