@@ -1,3 +1,13 @@
+## [1.7.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.7.0...v1.7.1) (2026-02-17)
+
+
+### Bug Fixes
+
+* **Trigger Colliders:** Collider2DList variable always null when entering playmode ([f5a04bd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/f5a04bd2b56ecf0c628a840477382127705eeda8))
+* **Trigger Colliders:** Triggers creating a new collider when one was already present ([825d6f2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/825d6f2dde0888412a2eef9bf8e0c9a2e4bf2c0d))
+
+
+
 # [1.7.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.6.2...v1.7.0) (2026-02-16)
 
 
@@ -38,15 +48,6 @@
 ### Features
 
 * Trigger particles ([48afe2f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/48afe2f3376eee8aa28234df4aac75ac361716a4))
-
-
-
-## [1.5.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.1...v1.5.2) (2026-02-13)
-
-
-### Bug Fixes
-
-* **Logger:** Instance needed to use non static type ([a8b9a3c](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/a8b9a3c4f2129c1e1c2a382ab67ce6597e0e3276))
 
 
 
