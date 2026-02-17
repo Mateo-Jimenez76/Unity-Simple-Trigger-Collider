@@ -1,6 +1,7 @@
+using SimpleTriggerCollider.Editor;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using SimpleTriggerCollider.Editor;
 using ColliderType = SimpleTriggerCollider.Editor.CustomSettings.ColliderType;
 namespace SimpleTriggerCollider.Runtime
 {
@@ -11,9 +12,11 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private UnityEvent<Collider, GameObject> onTriggerEnter;
         [SerializeField] private UnityEvent<Collider, GameObject> onTriggerStay;
         [SerializeField] private UnityEvent<Collider, GameObject> onTriggerExit;
+        [SerializeField] private LayerMask ignoreLayers;
 
         private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
 
+        private List<Collider> colliderList;
         private void _OnValidate()
         {
             if (this == null)
@@ -21,18 +24,28 @@ namespace SimpleTriggerCollider.Runtime
                 return;
             }
 
-            if (TryGetComponent<Collider>(out Collider collider))
+            GetComponents<Collider>(colliderList);
+
+            if (colliderList.Count > 0)
             {
-                collider.isTrigger = true; //Ensure that the collider is set to be a trigger
-                return;
+                foreach (Collider currentCollider in colliderList)
+                {
+                    if (currentCollider.isTrigger)
+                    {
+                        return;
+                    }
+                    continue;
+                }
+                Debug.LogWarning($"Multiple <color=lime>{nameof(Collider)}</color> components were found on <color=cyan>{gameObject.name}</color>. To prevent unintended behavior this script will not automatically assign one as a trigger, please do so manually.");
+            }
+            else
+            {
+                PackageLogger.Log($"No <color=lime>{nameof(Collider)}</color> component found on {gameObject.name}. Attempting to add default <color=lime>{nameof(Collider)}...</color>");
             }
 
-            PackageLogger.Log($"No Collider component found on {gameObject.name}. Attempting to add default Collider...");
-
-            //If there is no Collider component, check for a Collider2D component. 
-            if (TryGetComponent<Collider2D>(out Collider2D collider2D))
+            if (TryGetComponent<Collider2D>(out Collider2D collider))
             {
-                PackageLogger.LogWarning($"A <color=lime>Collider2D</color> component was found on {gameObject.name}! <color=yellow>Cannot automatically add a defaul Collider. Please remove the <color=lime>Collider2D</color> and manually add a Collider.</color>");
+                PackageLogger.LogError($"A <color=lime>Collider2D</color> component was found on {gameObject.name}. {nameof(TriggerCollider)} is designed to work with <color=lime>{nameof(Collider)}</color> components only, and this issue cannot be resolved automatically. Please manually remove the <color=lime>{nameof(Collider2D)}</color> and replace it with a <color=lime>{nameof(Collider)}</color>.");
                 return;
             }
 
@@ -63,17 +76,46 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerEnter(Collider collision)
         {
+            if (CollidedWithSelf(collision))
+            {
+                return;
+            }
+            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return;
+            }
             onTriggerEnter.Invoke(collision, gameObject);
         }
 
         private void OnTriggerStay(Collider collision)
         {
+            if (CollidedWithSelf(collision))
+            {
+                return;
+            }
+            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return;
+            }
             onTriggerStay.Invoke(collision, gameObject);
         }
 
         private void OnTriggerExit(Collider collision)
         {
+            if (CollidedWithSelf(collision))
+            {
+                return;
+            }
+            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return;
+            }
             onTriggerExit.Invoke(collision, gameObject);
+        }
+
+        private bool CollidedWithSelf(Collider collision)
+        {
+            return collision.gameObject == gameObject;
         }
     }
 }

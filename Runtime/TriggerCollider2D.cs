@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using SimpleTriggerCollider.Editor;
 using Collider2DType = SimpleTriggerCollider.Editor.CustomSettings.Collider2DType;
+using System.Collections.Generic;
 namespace SimpleTriggerCollider.Runtime
 {
     public class TriggerCollider2D : MonoBehaviour
@@ -11,24 +12,35 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerEnter;
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerStay;
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerExit;
+        [SerializeField] private LayerMask ignoreLayers;
 
         private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
 
+        private List<Collider2D> collider2DList;
         private void _OnValidate()
         {
             if (this == null)
             {
                 return;
             }
+            GetComponents<Collider2D>(collider2DList);
 
-            //Check if a collider2D exists on the game object.
-            if (TryGetComponent<Collider2D>(out Collider2D collider2D))
+            if (collider2DList.Count > 0)
             {
-                collider2D.isTrigger = true; //Ensure that the collider is set to be a trigger
-                return;
+                foreach (Collider2D currentCollider in collider2DList)
+                {
+                    if (currentCollider.isTrigger)
+                    {
+                        return;
+                    }
+                    continue;
+                }
+                Debug.LogWarning($"Multiple <color=lime>Collider2D</color> components were found on <color=cyan>{gameObject.name}</color>. To prevent unintended behavior this script will not automatically assign one as a trigger, please do so manually.");
             }
-
-            PackageLogger.Log($"No <color=lime>Collider2D</color> component found on {gameObject.name}. Attempting to add default <color=lime>Collider2D...");
+            else
+            {
+                PackageLogger.Log($"No <color=lime>Collider2D</color> component found on {gameObject.name}. Attempting to add default <color=lime>Collider2D...");
+            }
 
             if (TryGetComponent<Collider>(out Collider collider))
             {
@@ -63,17 +75,46 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (CollidedWithSelf(collision))
+            {
+                return;
+            }
+            if((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return;
+            }
             onTriggerEnter.Invoke(collision, gameObject);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
+            if (CollidedWithSelf(collision))
+            {
+                return;
+            }
+            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return;
+            }
             onTriggerStay.Invoke(collision, gameObject);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
+            if (CollidedWithSelf(collision))
+            {
+                return;
+            }
+            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return;
+            }
             onTriggerExit.Invoke(collision, gameObject);
+        }
+
+        private bool CollidedWithSelf(Collider2D collision)
+        {
+            return collision.gameObject == gameObject;
         }
     }
 }
