@@ -16,7 +16,7 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
 
-        private List<Collider> colliderList;
+        private List<Collider> colliderList = new();
         private void _OnValidate()
         {
             if (this == null)
