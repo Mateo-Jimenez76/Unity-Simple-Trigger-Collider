@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Trigger Collider Documentation</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" lang="en">
+  <link rel="stylesheet" href="DocumentationStyle.css">
+</head>
+  <body>
+  <h1 id="quick-start">Quick Start</h1>
+  <ol>
+    <li>Attach a TriggerCollider2D or TriggerCollider</li>
+    <li>Click + on any of the UnityEvents you wish to use</li>
+    <li>Drag in the &quot;CommonUseCaseFunctions&quot; asset found at the path <b> Assets > Resources > CommonUseCaseFunctions.asset </b> into the object box</li>
+  </ol>
+  <blockquote class="blockquote-tip">
+    <p>
+    You can also use your own custom functions by dragging any object that has scripts with functions you wish to call
+    </p>
+  </blockquote>
+  <ol start="5">
+    <li>Select your desired function and you're good to go</li>
+  </ol>
+  <p><img src="Gifs\Trigger Collider Demonstration.gif" alt="Trigger Collider Demonstration"></p>
+  <h2 id="dependencies">Dependencies</h2>
+  <ul>
+    <li>Only tested and approved for Unity Editor versions 6000.2.8f1 and above.</li>
+    <li>The Demo scene requires <a href="https://docs.unity3d.com/Packages/com.unity.cinemachine@3.0/manual/index.html">Cinemachine</a> 3.1.5 to be installed (The actual package does not require this for functionality)</li>
+  </ul>
+  <h1 id="features">Features</h1>
+  <h3 id="components">Components</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Purpose</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TriggerCollider2D</td>
+        <td>Listens for OnTrigger2D functions and invokes the corresponding UnityEvent</td>
+      </tr>
+      <tr>
+        <td>TriggerCollider</td>
+        <td>Listens for OnTrigger functions and invokes the corresponding UnityEvent</td>
+      </tr>
+      <tr>
+        <td>TriggerParticle</td>
+        <td>Invokes an event when a particle enters a collider marked as trigger</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="common-use-case-functions">Common Use Case Functions</h3>
+  <p>I have included a scriptable object that contains a handful of helpful functions that are often used in the context of trigger colliders.
+  The reason I included this feature is so you can get implimenting and testing right away!
+  And then later replace these functions with more polished and fine tuned versions if you wish.</p>
+  <ul>
+    <li>LoadSceneAsync(string sceneName)</li>
+    <li>DestroyObjectCollidedWith(Collider2D collision)</li>
+    <li>DestroyObjectCollidedWith(Collider collision)</li>
+    <li>LogCollision2D(Collider2D collision)</li>
+    <li>LogCollision(Collider collision)</li>
+  </ul>
+  <blockquote>
+    <p>
+    The 2D/3D versions of functions will only appear when being used with their corresponding trigger colliders.
+    Thus it is impossible to use LogCollision(Collider collision), for example, with a TriggerCollider2D component</p>
+  </blockquote>
+  <h1 id="understanding-the-behaviour-of-trigger-colliders">Understanding The Behaviour of Trigger Colliders</h1>
+  <blockquote>
+    <p>
+    The only difference between TriggerCollider and TriggerCollider2D is what physics functions they listen to, OnTriggerEnter or OnTriggerEnter2D and so on, and the corresponding Collider or Collider2D component that they rely on. Functionality and flexibility are otherwise the same between scripts.</p>
+  </blockquote>
+    <p>A component of type Collider(2D) is required by the scripts. If one is not already present, then a BoxCollider(2D) will be added to the object and marked as trigger.</p>
+  <blockquote class="blockquote-tip">
+    <p>
+    The Collider(2D) that is created by default can be changed in the settings menu of the package found in <b>Edit &gt; Project Settings &gt; Simple Trigger Colliders</b></p>
+  </blockquote>
+  <p><img src="Gifs\Trigger Collider Settings Demonstration.gif" alt="Trigger Collider Settings Demonstration"></p>
+  <blockquote class ="blockquote-warning">
+    <p>
+    A component of type Collider(2D) cannot be removed if it is the only Collider(2D) on the game object.
+    If it does get removed then another Collider(2D) will be added to the object(only works in edit mode).
+    This is done to prevent the script from breaking as it relies on a Collider(2D) component being present on the object.</p>
+  </blockquote>
+  <h1 id="understanding-the-defined-unity-events">Understanding The Defined Unity Events</h1>
+  <p>Each <a href="https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Events.UnityEvent.html">UnityEvent&lt;Collider(2D),GameObject&gt;</a> in the inspector corresponds with their respective OnTrigger functions.</p>
+  <ul>
+    <li>OnTriggerEnter(2D)</li>
+    <li>OnTriggerStay(2D)</li>
+    <li>OnTriggerExit(2D)</li>
+  </ul>
+  <p>There are two ways to pass in data to functions called by the UnityEvent&lt;Collider(2D),GameObject&gt;</p>
+  <ol>
+    <li>Writing the data explicitly in the inspector</li>
+    <li>Having the data be passed in automatially through the OnTrigger calls.</li>
+  </ol>
+  <p>The first option is fairly simple, assign the object, pick the function you wish to call and input the values.</p>
+  <blockquote class="blockquote-warning">
+    <p>
+    When using method 1 the function must only have 0-1 parameters, have a return type of void, and be public in order to appear as an option in the inspector.</p>
+  </blockquote>
+  <p>In order to use method 2 the function must only take in only two parameters (Collision(2D) collision, GameObject caller).</p>
+  <blockquote class="blockquote-tip">
+    <p>
+    You can still subscribe to the OnTrigger event through code if the function doesnt take in the two parameters, but you lose access to the data.</p>
+  </blockquote>
+  <h2 id="unity-event-execution-order">Unity Event Execution Order</h2>
+  <p>The execution order of functions listed within any given UnityEvent is relatively unknown, and thus it cannot be relied on. For example,</p>
+  <img width="674" height="388" alt="UnityEvent Execution Example" src="Images/Unity Event Inspector.png" />
+  <p>looking at the above image it would make sense that the object would...</p>
+  <ol>
+    <li>Play a sound named &quot;pickupCoin&quot;</li>
+    <li>Play a Particle System effect</li>
+    <li>Log the collision</li>
+    <li>Deactivate the object</li>
+  </ol>
+  <p>...all in that order when something enters its trigger collider. However when testing, the observed execution order is as follows</p>
+  <ol>
+    <li>Log the collision</li>
+    <li>Deactivate the object</li>
+  </ol>
+  <p>The sound and particle effect functions are ignored because those two components are on the object.
+  And since the object is now innactive the functions have no effect.</p>
+  <blockquote>
+    <p>
+    To read more about what an object being &quot;inactive&quot;, &quot;disabled&quot;, or &quot;deactivated&quot; means visit the official Unity documentation on <a href="https://docs.unity3d.com/6000.3/Documentation/ScriptReference/GameObject.SetActive.html">GameObject.SetActive</a></p>
+  </blockquote>
+  <p><b>Solution 1</b></p>
+  <p>You can move functionality away from the object that gets deactivated thus allowing the functions to have their effects go though.</p>
+  <blockquote>
+    <p>
+    Every function in a UnityEvent is called whether or not the invoking object becomes inactive due to one of those calls.</p>
+  </blockquote>
+  <p><b>Solution 2</b></p>
+  <p>You can also take advantage of the OnTriggerStay and OnTriggerExit events. These events DO have an explicit execution order relative to each other that goes as follows</p>
+  <ol>
+    <li>OnTriggerEnter</li>
+    <li>OnTriggerStay</li>
+    <li>OnTriggerExit</li>
+  </ol>
+  <p>Thus we can move the SetActive(false) function call to OnTriggerStay to ensure that all other functions are called before we deactivate the object.</p>
+  <p><b>Solution 3</b></p>
+  <p>You can move the functionality into your own custom functions, thus allowing you to more directly control execution order and functionality.
+  Although this takes more work I do recommened it, once you are past initial testing and prototyping, as you can implement <a href="https://www.geeksforgeeks.org/dsa/error-handling-in-programming/">error handling</a> and <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators">conditional operations</a> to make more robust and full proof products.</p>
+  <h3 id="understanding-the-common-use-case-functions">Understanding The Common Use Case Functions</h3>
+  <blockquote>
+    <p>
+    The reason for the use of a scriptable object is to circumvent the limitation that UnityEvents can only call functions from object references and not scripts.</p>
+  </blockquote>
+  <p>Another method of using these functions is directly through code. You can use the functions by making a reference to CommonUseCaseFunctions.[Function Name] as all functions are static.</p>
+  </body>
+</html>
