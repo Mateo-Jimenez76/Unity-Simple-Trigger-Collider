@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.7.1...v1.8.0) (2026-02-20)
+
+
+### Features
+
+* **Package Settings:** Added help boxes ([0b4f2fd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/0b4f2fd2d37d48f7dbc33e6e94c9d75fcd37c963))
+
+
+
 ## [1.7.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.7.0...v1.7.1) (2026-02-17)
 
 
@@ -39,15 +48,6 @@
 
 * **Custom Settings:** Null reference until opening settings menu for first time ([3ee7098](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/3ee7098238f0d7d15bcbfbbae89673a3144842a0))
 * **Trigger Colliders:** Missing reference to custom settings instance ([4688b76](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/4688b766abfaea388f7b5d88a31e388995e548c1))
-
-
-
-# [1.6.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.5.2...v1.6.0) (2026-02-13)
-
-
-### Features
-
-* Trigger particles ([48afe2f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/48afe2f3376eee8aa28234df4aac75ac361716a4))
 
 
 
