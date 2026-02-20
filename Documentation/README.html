@@ -66,7 +66,7 @@
     The 2D/3D versions of functions will only appear when being used with their corresponding trigger colliders.
     Thus it is impossible to use LogCollision(Collider collision), for example, with a TriggerCollider2D component</p>
   </blockquote>
-  <h1 id="understanding-the-behaviour-of-trigger-colliders">Understanding The Behaviour of Trigger Colliders</h1>
+  <h1>Understanding The Behaviour of Trigger Colliders</h1>
   <blockquote>
     <p>
     The only difference between TriggerCollider and TriggerCollider2D is what physics functions they listen to, OnTriggerEnter or OnTriggerEnter2D and so on, and the corresponding Collider or Collider2D component that they rely on. Functionality and flexibility are otherwise the same between scripts.</p>
@@ -79,8 +79,7 @@
   <p><img src="Gifs\Trigger Collider Settings Demonstration.gif" alt="Trigger Collider Settings Demonstration"></p>
   <blockquote class ="blockquote-warning">
     <p>
-    A component of type Collider(2D) cannot be removed if it is the only Collider(2D) on the game object.
-    If it does get removed then another Collider(2D) will be added to the object(only works in edit mode).
+    If the only remaining collider(2D) is removed from the object then another Collider(2D) will be added to the object(only works in edit mode) on the next OnValidate() call.
     This is done to prevent the script from breaking as it relies on a Collider(2D) component being present on the object.</p>
   </blockquote>
   <h1 id="understanding-the-defined-unity-events">Understanding The Defined Unity Events</h1>
