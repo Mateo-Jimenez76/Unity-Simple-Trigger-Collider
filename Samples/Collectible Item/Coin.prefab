@@ -28,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787820983073440126}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9692898, y: 3.9021602, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4235714235707086337}
+  - {fileID: 7437815341672255616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &478752451383749358
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d491559e604d4f845b20b3f578f15e90, type: 3}
   m_Color: {r: 1, g: 0.881173, b: 0.042452812, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,9 +121,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5057403677889329870}
+      - m_Target: {fileID: 6862600141254502786}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: 
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,25 +146,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7487256199609452554}
-        m_TargetAssemblyTypeName: SimpleTriggerCollider.Runtime.CommonUseCaseFunctions.CommonUseCaseFunctions,
-          Runtime.CommonUseCaseFunctions
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onTriggerStay:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787820983073440126}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 478752451383749358}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -177,6 +164,9 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &7338437235330204898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,7 +205,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.6, y: 1.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -320,7 +310,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &2230284564917898491
+--- !u!1001 &4828885729164020346
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -346,15 +336,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2610900693880740602, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2610900693880740602, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2610900693880740602, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2610900693880740602, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -377,13 +367,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
---- !u!4 &4235714235707086337 stripped
+--- !u!198 &6862600141254502786 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2035485763466126328, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
+  m_PrefabInstance: {fileID: 4828885729164020346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7437815341672255616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2610900693880740602, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
-  m_PrefabInstance: {fileID: 2230284564917898491}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5057403677889329870 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6403008332183844405, guid: b9d8be1ac03a3de429e3b33c06a1af05, type: 3}
-  m_PrefabInstance: {fileID: 2230284564917898491}
+  m_PrefabInstance: {fileID: 4828885729164020346}
   m_PrefabAsset: {fileID: 0}
