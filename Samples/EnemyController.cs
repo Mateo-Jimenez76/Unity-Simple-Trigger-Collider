@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-namespace SimpleTriggerColliders.Demo
+namespace SimpleTriggerCollider.Demo
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class EnemyController : MonoBehaviour
