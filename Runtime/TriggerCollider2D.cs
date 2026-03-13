@@ -12,6 +12,7 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerEnter;
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerStay;
         [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerExit;
+        [Tooltip("Any object with the following checked layers will not trigger the events.")]
         [SerializeField] private LayerMask ignoreLayers;
 
         private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
