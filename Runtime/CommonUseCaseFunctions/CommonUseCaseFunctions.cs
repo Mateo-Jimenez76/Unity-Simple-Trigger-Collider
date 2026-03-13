@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
 {
-    [CreateAssetMenu(fileName = "CommonUseCaseFunctions", menuName = "SimpleTriggerColliders/Common Use Case Functions")]
     public class CommonUseCaseFunctions : ScriptableObject
     {
         /// <summary>
