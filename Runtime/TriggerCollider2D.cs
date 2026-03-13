@@ -56,19 +56,19 @@ namespace SimpleTriggerCollider.Runtime
             switch (settings.GetDefaultCollider2DType())
             {
                 case (Collider2DType.Box):
-                    PackageLogger.Log("Added a <color=lime>BoxCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>BoxCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
                     break;
                 case (Collider2DType.Circle):
-                    PackageLogger.Log("Added a <color=lime>CircleCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>CircleCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<CircleCollider2D>().isTrigger = true;
                     break;
                 case (Collider2DType.Polygon):
-                    PackageLogger.Log("Added a <color=lime>PolygonCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>PolygonCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
                     break;
                 case (Collider2DType.Edge):
-                    PackageLogger.Log("Added a <color=lime>EdgeCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>EdgeCollider2D</color> component because <color=lime>TriggerCollider2D.cs</color> depends on a <color=lime>Collider2D</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
                     break;
             }

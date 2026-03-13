@@ -57,19 +57,19 @@ namespace SimpleTriggerCollider.Runtime
             switch (settings.GetDefaultColliderType())
             {
                 case (ColliderType.Box):
-                    PackageLogger.Log("Added a <color=lime>BoxCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>BoxCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<BoxCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Sphere):
-                    PackageLogger.Log("Added a <color=lime>SphereCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>SphereCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<SphereCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Capsule):
-                    PackageLogger.Log("Added a <color=lime>CapsuleCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>CapsuleCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<CapsuleCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Mesh):
-                    PackageLogger.Log("Added a <color=lime>MeshCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    PackageLogger.Log("<color=yellow>Added</color> a <color=lime>MeshCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
                     gameObject.AddComponent<MeshCollider>().isTrigger = true;
                     break;
             }
