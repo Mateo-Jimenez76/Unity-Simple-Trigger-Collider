@@ -13,7 +13,6 @@ namespace SimpleTriggerCollider.Demo
         private Transform target;
         private void Awake()
         {
-            //Make sure the indicator is blank
             agroIndicator.text = "";
 
             rb = GetComponent<Rigidbody2D>();
@@ -33,6 +32,7 @@ namespace SimpleTriggerCollider.Demo
                 agroIndicator.text = "!";
                 // Move towards the target
                 Vector2 direction = (target.position - transform.position).normalized;
+                direction.y = 0; // Keep the enemy on ground
                 rb.linearVelocity = direction * speed;
             }
         }

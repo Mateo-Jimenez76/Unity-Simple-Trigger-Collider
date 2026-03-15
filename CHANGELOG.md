@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.8.0...v1.9.0) (2026-03-13)
+
+
+### Features
+
+* **Tool Tips:** Add tooltips to ignoreLayers property ([941d73f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/941d73f6731a65c58bcf5df61fedc3f1d882f54b))
+
+
+
 # [1.8.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.7.1...v1.8.0) (2026-02-20)
 
 
@@ -38,16 +47,6 @@
 ### Bug Fixes
 
 * **Trigger Collider:** SendMessage cannot be called during OnValidate ([93dd67e](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/93dd67eb7dbd055a143a497c99544d6c9482d147))
-
-
-
-## [1.6.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.6.0...v1.6.1) (2026-02-14)
-
-
-### Bug Fixes
-
-* **Custom Settings:** Null reference until opening settings menu for first time ([3ee7098](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/3ee7098238f0d7d15bcbfbbae89673a3144842a0))
-* **Trigger Colliders:** Missing reference to custom settings instance ([4688b76](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/4688b766abfaea388f7b5d88a31e388995e548c1))
 
 
 
