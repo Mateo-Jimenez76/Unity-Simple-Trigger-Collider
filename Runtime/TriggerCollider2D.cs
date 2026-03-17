@@ -46,7 +46,7 @@ namespace SimpleTriggerCollider.Runtime
 
             if (TryGetComponent<Collider>(out Collider collider))
             {
-                PackageLogger.LogError($"A <color=lime>Collider</color> component was found on {gameObject.name}. {nameof(TriggerCollider2D)} is designed to work with <color=lime>Collider2D</color> components only, and this issue cannot be resolved automatically. Please manually remove the <color=lime>Collider</color> and replace it with a <color=lime>Collider2D</color>.");
+                PackageLogger.LogError($"A <color=lime>Collider</color> component was found on {gameObject.name}. {nameof(TriggerCollider2D)} <color=red>is designed to work with <color=lime>Collider2D</color> components only</color>, and this issue cannot be resolved automatically. Please manually remove the <color=lime>Collider</color> and replace it with a <color=lime>Collider2D</color>.");
                 return;
             }
 
