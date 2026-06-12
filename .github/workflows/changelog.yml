@@ -18,14 +18,14 @@ jobs:
     steps:
       # Step 1: Check out your repository's code
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # We need to fetch all history and tags for the changelog generator
           fetch-depth: 0
 
       # Step 2: Generate the changelog
       - name: Generate Changelog
-        uses: TriPSs/conventional-changelog-action@v5
+        uses: TriPSs/conventional-changelog-action@v6.3.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: "CHANGELOG.md"
@@ -36,7 +36,7 @@ jobs:
 
       # Step 3: Commit and push the updated CHANGELOG.md
       - name: Commit Updated Changelog
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore(docs): update CHANGELOG.md [skip ci]"
           file_pattern: "CHANGELOG.md"

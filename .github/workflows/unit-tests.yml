@@ -16,7 +16,7 @@ jobs:
       csharp_files_changed: ${{ steps.changed-csharp-files.outputs.any_changed }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
             
       - name: Get All Changed csharp Files
         id: changed-csharp-files
@@ -53,7 +53,7 @@ jobs:
             path: ${{ env.PROJECT_PATH }}
             
       - name: Cache Unity Library
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v5.0.5
         with:
             path: TempProject/Library
             key: lib-${{ runner.os }}-${{ env.UNITY_VERSION }}-${{ hashFiles(format('{0}/package.json', env.PROJECT_PATH)) }}
@@ -75,7 +75,7 @@ jobs:
             coverageOptions: generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;dontClear;assembliesToInclude=${{env.ASSEMBLIES_TO_COVER}}
             
       - name: Upload Test Results
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6
         if: always() # 'always()' ensures this runs even if tests fail
         with:
             name: test-playmode-results
