@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+
 namespace SimpleTriggerCollider.Editor
 {
     public class CustomSettings : ScriptableObject
@@ -7,7 +8,7 @@ namespace SimpleTriggerCollider.Editor
         // Path to the asset that will hold the settings information
         // "Asset/Editor" restricts your ability to use these settings at runtime
         // So "Assets/Resources" is a better location if runtime access is needed
-        public const string settingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
+        public const string settingsPath = "Assets/Resources/Simple Trigger Collider/SimpleTriggerColliderSettings.asset";
 
         // --- Package Settings ---
         [SerializeField] private bool debugLogs;
@@ -43,6 +44,12 @@ namespace SimpleTriggerCollider.Editor
                 Debug.LogWarning("<color=yellow>Created Resources folder</color> for Simple Trigger Collider settings at <color=cyan>Assets/Resources</color>");
                 //...Create the Resources folder
                 AssetDatabase.CreateFolder("Assets", "Resources");
+            }
+
+            if (!AssetDatabase.IsValidFolder("Assets/Resources/Simple Trigger Collider"))
+            {
+                AssetDatabase.CreateFolder("Assets/Resources", "Simple Trigger Collider");
+                Debug.LogWarning("<color=yellow>Created</color> <color=cyan>Simple Trigger Collider</color> folder at <color=cyan>Assets/Resources/Simple Trigger Collider</color>");
             }
 
             //Try to load the settings asset

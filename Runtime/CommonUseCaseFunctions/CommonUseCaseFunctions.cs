@@ -101,22 +101,26 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
             {
                 //Check that there is a valid location
-                if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                if (!AssetDatabase.IsValidFolder("Assets/Resources/Simple Trigger Collider"))
                 {
                     Debug.LogWarning("Created Resources folder for 'Common Use Case Functions'");
-                    //...Create the Resources folder
-                    AssetDatabase.CreateFolder("Assets", "Resources");
                 }
 
-                //Try to load the settings asset
-                var UseCaseFunctions = AssetDatabase.LoadAssetAtPath<CommonUseCaseFunctions>($"Assets/Resources/{nameof(CommonUseCaseFunctions)}.asset");
+                if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                {
+                    AssetDatabase.CreateFolder("Resources","Simple Trigger Collider");
+                    Debug.LogWarning("<color=yellow>Created</color> <color=cyan>Simple Trigger Collider</color> folder at <color=cyan>Assets/Resources/Simple Trigger Collider</color>");
+                }
+
+                //Try to load
+                var UseCaseFunctions = AssetDatabase.LoadAssetAtPath<CommonUseCaseFunctions>($"Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset");
 
                 //If the settings asset does not exist...
                 if (UseCaseFunctions == null)
                 {
-                    Debug.LogWarning($"<color=yellow>Created '{nameof(CommonUseCaseFunctions)}' asset</color> at <color=cyan>Assets/Resources/CommonUseCaseFunctions.asset</color>");
+                    Debug.LogWarning($"<color=yellow>Created '{nameof(CommonUseCaseFunctions)}' asset</color> at <color=cyan>Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset</color>");
                     UseCaseFunctions = ScriptableObject.CreateInstance<CommonUseCaseFunctions>();
-                    AssetDatabase.CreateAsset(UseCaseFunctions, "Assets/Resources/CommonUseCaseFunctions.asset");
+                    AssetDatabase.CreateAsset(UseCaseFunctions, $"Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset");
                 }
             }
         }
