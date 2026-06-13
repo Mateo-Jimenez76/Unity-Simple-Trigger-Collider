@@ -95,7 +95,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             PackageLogger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
         }
 
-
+#if UNITY_EDITOR
         public class Initializer : AssetPostprocessor
         {
             static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
@@ -124,5 +124,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
                 }
             }
         }
+#endif
     }
+
 }
