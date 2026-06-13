@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 using SimpleTriggerCollider.Editor;
-using Collider2DType = SimpleTriggerCollider.Editor.CustomSettings.Collider2DType;
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using Collider2DType = SimpleTriggerCollider.Editor.CustomSettings.Collider2DType;
+#endif
 namespace SimpleTriggerCollider.Runtime
 {
     public class TriggerCollider2D : MonoBehaviour
@@ -15,6 +17,7 @@ namespace SimpleTriggerCollider.Runtime
         [Tooltip("Any object with the following checked layers will not trigger the events.")]
         [SerializeField] private LayerMask ignoreLayers;
 
+#if UNITY_EDITOR
         private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
 
         private List<Collider2D> collider2DList = new();
@@ -74,7 +77,7 @@ namespace SimpleTriggerCollider.Runtime
                     break;
             }
         }
-
+#endif
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (CollidedWithSelf(collision))
