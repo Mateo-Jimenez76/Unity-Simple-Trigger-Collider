@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.1...v2.0.2) (2026-06-13)
+
+
+### Bug Fixes
+
+* **Common Use Case Functions:** Editor references erroring in builds ([e5e9a34](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/e5e9a3493960eac9f40d07fb968f7064193eb880))
+
+
+
 ## [2.0.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.0...v2.0.1) (2026-06-13)
 
 
@@ -36,16 +45,6 @@
 ### Features
 
 * **Package Settings:** Added help boxes ([0b4f2fd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/0b4f2fd2d37d48f7dbc33e6e94c9d75fcd37c963))
-
-
-
-## [1.7.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.7.0...v1.7.1) (2026-02-17)
-
-
-### Bug Fixes
-
-* **Trigger Colliders:** Collider2DList variable always null when entering playmode ([f5a04bd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/f5a04bd2b56ecf0c628a840477382127705eeda8))
-* **Trigger Colliders:** Triggers creating a new collider when one was already present ([825d6f2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/825d6f2dde0888412a2eef9bf8e0c9a2e4bf2c0d))
 
 
 
