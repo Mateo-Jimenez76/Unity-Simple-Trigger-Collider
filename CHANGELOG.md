@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.9.0...v2.0.0) (2026-06-13)
+
+
+### Code Refactoring
+
+* Move resource assets into package subdirectory ([022c8ee](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/022c8eee6ad204b14c49ec1cd895fd05afcd40e0))
+
+
+### BREAKING CHANGES
+
+* The existing assets stored in the resources folder will no longer be used. I recommend deleting them to avoid future confusion.
+
+
+
 # [1.9.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.8.0...v1.9.0) (2026-03-13)
 
 
@@ -38,15 +52,6 @@
 
 * **Trigger Colliders:** Added script icons ([e70c618](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/e70c61872939defe6d2174fee1dd0af6f9648c9f))
 * **Use Case Functions:** Add "Deactivate Trigger" function ([40b12a3](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/40b12a32e2a3ac605515d167bb25b5fa4c969852))
-
-
-
-## [1.6.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.6.1...v1.6.2) (2026-02-14)
-
-
-### Bug Fixes
-
-* **Trigger Collider:** SendMessage cannot be called during OnValidate ([93dd67e](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/93dd67eb7dbd055a143a497c99544d6c9482d147))
 
 
 
