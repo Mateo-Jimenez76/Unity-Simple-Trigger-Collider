@@ -7,24 +7,30 @@
   "unityRelease": "",
   "documentationUrl": "Documentation/README.html",
   "changelogUrl": "CHANGELOG.md",
-  "dependencies": {
-    "com.unity.cinemachine": "3.1.5"
-  },
   "samples": [
     {
       "displayName": "Collectible Item",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a collectible item.",
-      "path": "Samples/Collectible Item"
+      "path": "Samples/Collectible Item",
+      "dependencies": {
+        "com.unity.cinemachine": "3.1.5"
+      }
     },
     {
       "displayName": "Enemy Alert",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create an enemy alert.",
-      "path": "Samples/Enemy Alert"
+      "path": "Samples/Enemy Alert",
+      "dependencies": {
+        "com.unity.cinemachine": "3.1.5"
+      }
     },
     {
       "displayName": "Speed Boost",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a speed boost.",
-      "path": "Samples/Speed Boost"
+      "path": "Samples/Speed Boost",
+      "dependencies": {
+        "com.unity.cinemachine": "3.1.5"
+      }
     }
   ],
   "keywords": [
