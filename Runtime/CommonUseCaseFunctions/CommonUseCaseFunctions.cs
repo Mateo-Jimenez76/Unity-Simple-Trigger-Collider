@@ -1,5 +1,7 @@
-using SimpleTriggerCollider.Editor;
+#if UNITY_EDITOR
 using UnityEditor;
+using SimpleTriggerCollider.Editor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions

@@ -1,9 +1,9 @@
-using SimpleTriggerCollider.Editor;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 #if UNITY_EDITOR
 using ColliderType = SimpleTriggerCollider.Editor.CustomSettings.ColliderType;
+using SimpleTriggerCollider.Editor;
 #endif
 namespace SimpleTriggerCollider.Runtime
 {

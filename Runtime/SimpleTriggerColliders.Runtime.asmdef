@@ -2,7 +2,7 @@
     "name": "SimpleTriggerColliders.Runtime",
     "rootNamespace": "",
     "references": [
-        "GUID:5de7a88187d86924cb705092ac7cba17"
+        "SimpleTriggerColliders.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -11,12 +11,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "com.mateojimenez.healthsystem",
-            "expression": "3.0.0",
-            "define": "HAS_HEALTH_SYSTEM"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }
