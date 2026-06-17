@@ -22,6 +22,7 @@ namespace SimpleTriggerCollider.Runtime
                 var trigger = particleSystem.trigger;
                 trigger.enabled = true;
                 trigger.enter = ParticleSystemOverlapAction.Callback;
+                trigger.exit = ParticleSystemOverlapAction.Callback;
             }
         }
 
@@ -29,13 +30,14 @@ namespace SimpleTriggerCollider.Runtime
         {
             //Populate list
             particleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, particlesEnter);
-            partcicleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Exit,particlesExit);
+            particleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Exit,particlesExit);
+
             //For each particle, invoke the event
-            foreach (ParticleSystem.Particle particle in particles)
+            foreach (ParticleSystem.Particle particle in particlesEnter)
             {
                 onParticleTriggerEnter.Invoke();
             }
-            foreach (ParticleSystem.Particle particle in particles)
+            foreach (ParticleSystem.Particle particle in particlesExit)
             {
                 onParticleTriggerExit.Invoke();
             }
