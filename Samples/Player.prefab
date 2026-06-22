@@ -34,7 +34,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &7604307694151401674
 TrailRenderer:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -80,6 +80,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -138,7 +139,6 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467611735978266948}
   - component: {fileID: 5976271672138009577}
-  - component: {fileID: 9171094168552667347}
+  - component: {fileID: 1144060830231233372}
   - component: {fileID: 7756711365415098941}
   - component: {fileID: 1579108288479467153}
   m_Layer: 0
@@ -181,6 +181,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5976271672138009577
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -226,6 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -235,9 +237,8 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9171094168552667347
+--- !u!114 &1144060830231233372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,9 +247,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7293605394535546904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90a64e05e7d33848999fe2d7ea2fb15, type: 3}
+  m_Script: {fileID: 11500000, guid: b4c9769cfc0937a4083bfc76783e7b12, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: SimpleTriggerColliders.Samples::SimpleTriggerCollider.Demo.PlayerMovement
   _maxSpeed: 10
   _acceleration: 7
   _deceleration: 7
@@ -339,8 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8613241637883029335}
   - component: {fileID: 1940953271634039718}
-  - component: {fileID: 4418302099691064123}
-  - component: {fileID: 6759648900433501408}
+  - component: {fileID: 2514994348284681392}
   m_Layer: 0
   m_Name: Ground Check
   m_TagString: Untagged
@@ -409,7 +409,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.16520452}
   m_EdgeRadius: 0
---- !u!114 &4418302099691064123
+--- !u!114 &2514994348284681392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -418,36 +418,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7674646865580823527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b64b06032d3598478255b5b6d83b4b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 21b195d4d47bb2f48b2487ac26d50356, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: SimpleTriggerColliders.Samples::GroundDetection
+  m_EditorClassIdentifier: SimpleTriggerColliders.Samples::SimpleTriggerCollider.Demo.GroundDetection
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
---- !u!50 &6759648900433501408
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7674646865580823527}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+    m_Bits: 1
