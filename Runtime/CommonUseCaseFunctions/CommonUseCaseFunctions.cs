@@ -120,7 +120,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
                 //If the settings asset does not exist...
                 if (UseCaseFunctions == null)
                 {
-                    Debug.LogWarning($"<color=yellow>Created '{nameof(CommonUseCaseFunctions)}' asset</color> at <color=cyan>Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset</color>");
+                    Debug.LogWarning($"<color=yellow>Created '<color=lime>{nameof(CommonUseCaseFunctions)}</color>' asset</color> at <color=cyan>Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset</color>");
                     UseCaseFunctions = ScriptableObject.CreateInstance<CommonUseCaseFunctions>();
                     AssetDatabase.CreateAsset(UseCaseFunctions, $"Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset");
                 }
