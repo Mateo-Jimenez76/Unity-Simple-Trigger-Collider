@@ -18,6 +18,11 @@ namespace SimpleTriggerCollider.Demo
 
         public void OnTriggerStay2D(Collider2D collision)
         {
+            if(collision.CompareTag("Player"))
+            {
+                return;
+            }
+
             if (rb.linearVelocityY > 0.1f)
             {
                 IsGrounded = false;
