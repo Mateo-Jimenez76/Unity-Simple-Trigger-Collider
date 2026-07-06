@@ -9,6 +9,7 @@ namespace SimpleTriggerCollider.Editor
         // "Asset/Editor" restricts your ability to use these settings at runtime
         // So "Assets/Resources" is a better location if runtime access is needed
         public const string settingsPath = "Assets/Resources/Simple Trigger Collider/SimpleTriggerColliderSettings.asset";
+        public const string settingsResourcePath = "Simple Trigger Collider/SimpleTriggerColliderSettings";
 
         // --- Package Settings ---
         [SerializeField] private bool debugLogs;

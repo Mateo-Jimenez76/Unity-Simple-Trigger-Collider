@@ -55,7 +55,7 @@ namespace SimpleTriggerCollider.Runtime
             }
 
             //Load Package Settings
-            var settings = Resources.Load<CustomSettings>("SimpleTriggerColliderSettings");
+            var settings = Resources.Load<CustomSettings>(CustomSettings.settingsResourcePath);
 
             //Check for what kind of Collider2D to create
             switch (settings.GetDefaultColliderType())
