@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 88314130}
   - component: {fileID: 88314129}
   - component: {fileID: 88314128}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 1353753134}
   - component: {fileID: 1353753133}
   - component: {fileID: 1353753132}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7293605394535546904, guid: 928e225172b07f04ba78741848fac911, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -529,7 +533,7 @@ GameObject:
   - component: {fileID: 1512896739}
   - component: {fileID: 1512896738}
   - component: {fileID: 1512896737}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
