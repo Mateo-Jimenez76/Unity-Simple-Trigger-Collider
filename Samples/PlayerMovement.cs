@@ -26,15 +26,12 @@ namespace SimpleTriggerCollider.Demo
         private float _horizontalInput;
         private float _coyoteTimeCounter;
         private Rigidbody2D _rb;
-        private PlayerInput _input;
         private InputAction _move;
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
             _rb.freezeRotation = true;
-
-            _input = GetComponent<PlayerInput>();
             _move = InputSystem.actions["Move"];
             InputSystem.actions["Jump"].performed += context => TryJump();
 
