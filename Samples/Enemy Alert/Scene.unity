@@ -305,9 +305,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5596773813894061096, guid: 928e225172b07f04ba78741848fac911, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7293605394535546904, guid: 928e225172b07f04ba78741848fac911, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293605394535546904, guid: 928e225172b07f04ba78741848fac911, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674646865580823527, guid: 928e225172b07f04ba78741848fac911, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -324,7 +336,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: ignoreLayers.m_Bits
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.size
@@ -333,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -344,8 +360,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1663419462}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -357,7 +377,15 @@ PrefabInstance:
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1850320634}
+      objectReference: {fileID: 1663419461}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayOneShot
@@ -368,7 +396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
+      value: BecomeAgro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -380,7 +412,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: SimpleTriggerCollider.Demo.EnemyController, SimpleTriggerColliders.Samples
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -400,6 +436,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
+      propertyPath: onTriggerStay.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2323686440428236029, guid: cb81984310f89ac4bbdbedf4e365b86b, type: 3}
@@ -600,7 +640,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 90626553049373268, guid: 3f48b6535fc496f44809b3f01f31a723, type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 171080711735002820, guid: 3f48b6535fc496f44809b3f01f31a723, type: 3}
       propertyPath: m_Name
