@@ -28,6 +28,7 @@
         <ol>
           <li><a href="#components">Components</a></li>
           <li><a href="#common-use-case-functions">Common Use Case Functions</a></li>
+          <li><a href="#complex-common-use-case-functions">Complex Common Use Case Functions</a></li>
         </ol>
       </li>
       <li><a href="#trigger-collider-behaviour">Understanding Trigger Collider Behaviour</a></li>
@@ -145,6 +146,88 @@
         option on a <code>TriggerCollider2D</code>.
       </p>
     </blockquote>
+
+
+    <!-- Complex Common Use Case Functions -->
+    <h2 id="complex-common-use-case-functions">Complex Common Use Case Functions</h2>
+
+    <p>
+      A dynamic function can only receive what the UnityEvent itself provides —
+      <code>(Collider(2D) collision, GameObject caller)</code> — and a static (inspector)
+      function is limited to 0–1 manually entered values. Some use cases need more
+      configuration than that. For these, <strong>CommonUseCaseFunctions</strong> uses a
+      companion component to carry the extra data instead of trying to pass it through the
+      UnityEvent itself.
+    </p>
+
+    <p>
+      The pattern is:
+    </p>
+
+    <ol>
+      <li>Add the matching <em>info component</em> to the same GameObject as your <code>TriggerCollider</code>/<code>TriggerCollider2D</code> (the "caller").</li>
+      <li>Fill in the fields on that component in the inspector.</li>
+      <li>Assign the complex function to the UnityEvent as usual. At runtime it reads the extra data straight off the info component via <code>caller.TryGetComponent(...)</code>.</li>
+    </ol>
+
+    <blockquote class="warning">
+      <p>
+        If the required info component is missing from the caller, the function logs an error
+        and does nothing — it will not throw an exception or stop other functions in the
+        UnityEvent from running.
+      </p>
+    </blockquote>
+
+    <h3>Example: <code>Instantiate</code></h3>
+
+    <p>
+      <code>Instantiate(Collider(2D) collision, GameObject caller)</code> spawns an object when
+      a trigger fires, but it needs three additional pieces of information that a UnityEvent
+      can't supply on its own: <em>which</em> object to spawn, <em>where</em> to spawn it, and
+      how that location should be interpreted. This extra data lives on an
+      <code>InstantiationInfo</code> component:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Object To Instantiate</code></td>
+          <td>The prefab or GameObject to spawn.</td>
+        </tr>
+        <tr>
+          <td><code>Location Type</code></td>
+          <td>
+            How to determine the spawn position — <code>Transform</code>, <code>Vector3</code>,
+            or <code>Collision</code> (the position of the collider that triggered the event).
+          </td>
+        </tr>
+        <tr>
+          <td><code>Transform</code> / <code> Vector3</code></code></td>
+          <td>The transform or coordinates to use, depending on the selected <code>Location Type</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>To use it:</p>
+
+    <ol>
+      <li>Add an <code>InstantiationInfo</code> component to the same GameObject as your <code>TriggerCollider(2D)</code>.</li>
+      <li>Set <strong>Object To Instantiate</strong> to the prefab you want spawned.</li>
+      <li>Choose a <strong>Location Type</strong> and fill in the matching location field.</li>
+      <li>On the UnityEvent, drag in the <strong>CommonUseCaseFunctions</strong> asset and select <code>Instantiate</code>.</li>
+    </ol>
+
+    <p>
+      This same approach — pairing a complex function with a dedicated info component on the
+      caller — is the general strategy for any use case that needs more data than a UnityEvent
+      can carry on its own.
+    </p>
   </section>
 
 
