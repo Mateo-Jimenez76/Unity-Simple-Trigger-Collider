@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.2...v2.1.0) (2026-07-18)
+
+
+### Features
+
+* **Common Use Case:** Instantiate object ([567a8b7](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/567a8b76fcfb5225e3dd7157156bb2c2d9d54799))
+
+
+
 ## [2.0.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.1...v2.0.2) (2026-06-13)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * **Tool Tips:** Add tooltips to ignoreLayers property ([941d73f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/941d73f6731a65c58bcf5df61fedc3f1d882f54b))
-
-
-
-# [1.8.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.7.1...v1.8.0) (2026-02-20)
-
-
-### Features
-
-* **Package Settings:** Added help boxes ([0b4f2fd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/0b4f2fd2d37d48f7dbc33e6e94c9d75fcd37c963))
 
 
 
