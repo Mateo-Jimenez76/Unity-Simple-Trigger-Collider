@@ -133,10 +133,12 @@
 
     <ul>
       <li><code>LoadSceneAsync(string sceneName)</code></li>
-      <li><code>DestroyObjectCollidedWith(Collider2D collision)</code></li>
-      <li><code>DestroyObjectCollidedWith(Collider collision)</code></li>
-      <li><code>LogCollision2D(Collider2D collision)</code></li>
-      <li><code>LogCollision(Collider collision)</code></li>
+      <li><code>DestroyObjectCollidedWith(Collider2D collision,GameObject caller)</code></li>
+      <li><code>DestroyObjectCollidedWith(Collider collision,GameObject caller)</code></li>
+      <li><code>LogCollision2D(Collider2D collision,GameObject caller)</code></li>
+      <li><code>LogCollision(Collider collision,GameObject caller)</code></li>
+      <li><code>Instantiate(Collider collision, GameObject caller)</code></li>
+      <li><code>Instantiate(collider2D collision,GameObject caller)</code></li>
     </ul>
 
     <blockquote>
