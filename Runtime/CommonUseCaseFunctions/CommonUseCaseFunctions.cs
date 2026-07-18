@@ -42,6 +42,63 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             SceneManager.LoadSceneAsync(sceneName);
         }
 
+        public static void Instantiate(Collider2D collision, GameObject caller)
+        {
+            if (!caller.TryGetComponent(out InstantiationInfo instantiationInfo))
+            {
+                Debug.LogError($"Cannot Instantiate object because no {nameof(InstantiationInfo)} component is found on '{caller.name}'",caller);
+                return;
+            }
+
+            if(instantiationInfo.ObjectToInstantiate == null)
+            {
+                Debug.LogError($"Cannot Instantiate object because no object is assigned to '{nameof(instantiationInfo.ObjectToInstantiate)}' on '{caller.name}'", caller);
+                return;
+            }
+
+            switch (instantiationInfo._LocationType)
+            {
+                case InstantiationInfo.LocationType.Transform:
+                    Instantiate(instantiationInfo.ObjectToInstantiate, instantiationInfo.LocationTransform.position, Quaternion.identity);
+                    break;
+                case InstantiationInfo.LocationType.Vector3:
+                    Instantiate(instantiationInfo.ObjectToInstantiate, instantiationInfo.Location, Quaternion.identity);
+                    break;
+                case InstantiationInfo.LocationType.Collision:
+                    Instantiate(instantiationInfo.ObjectToInstantiate, collision.transform.position, Quaternion.identity);
+                    break;
+            }
+        }
+
+        public static void Instantiate(Collider collision, GameObject caller)
+        {
+            if (!caller.TryGetComponent(out InstantiationInfo instantiationInfo))
+            {
+                Debug.LogError($"Cannot Instantiate object because no {nameof(InstantiationInfo)} component is found on '{caller.name}'", caller);
+                return;
+            }
+
+            if (instantiationInfo.ObjectToInstantiate == null)
+            {
+                Debug.LogError($"Cannot Instantiate object because no object is assigned to '{nameof(instantiationInfo.ObjectToInstantiate)}' on '{caller.name}'", caller);
+                return;
+            }
+
+            switch (instantiationInfo._LocationType)
+            {
+                case InstantiationInfo.LocationType.Transform:
+                    Instantiate(instantiationInfo.ObjectToInstantiate, instantiationInfo.LocationTransform.position, Quaternion.identity);
+                    break;
+                case InstantiationInfo.LocationType.Vector3:
+                    Instantiate(instantiationInfo.ObjectToInstantiate, instantiationInfo.Location, Quaternion.identity);
+                    break;
+                case InstantiationInfo.LocationType.Collision:
+                    Instantiate(instantiationInfo.ObjectToInstantiate, collision.transform.position, Quaternion.identity);
+                    break;
+            }
+        }
+
+
         /// <summary>
         /// Deactivates the trigger associated with the specified collider when a collision occurs.
         /// </summary>
