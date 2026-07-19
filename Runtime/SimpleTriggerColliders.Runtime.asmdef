@@ -2,7 +2,8 @@
     "name": "SimpleTriggerColliders.Runtime",
     "rootNamespace": "",
     "references": [
-        "SimpleTriggerColliders.Editor"
+        "SimpleTriggerColliders.Editor",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
