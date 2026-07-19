@@ -1,3 +1,12 @@
+## [2.1.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.1.0...v2.1.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* **Common Use Case:** Misleading debug logs during asset creation ([905fadd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/905fadd5900d597aed05ae0fadbbfeeccfd555ea))
+
+
+
 # [2.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.2...v2.1.0) (2026-07-18)
 
 
@@ -36,15 +45,6 @@
 ### BREAKING CHANGES
 
 * The existing assets stored in the resources folder will no longer be used. I recommend deleting them to avoid future confusion.
-
-
-
-# [1.9.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.8.0...v1.9.0) (2026-03-13)
-
-
-### Features
-
-* **Tool Tips:** Add tooltips to ignoreLayers property ([941d73f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/941d73f6731a65c58bcf5df61fedc3f1d882f54b))
 
 
 
