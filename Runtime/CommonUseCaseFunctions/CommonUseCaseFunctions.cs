@@ -1,6 +1,5 @@
 #if UNITY_EDITOR
 using UnityEditor;
-using SimpleTriggerCollider.Editor;
 #endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +15,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void DestroyObjectCollidedWith(Collider2D collision, GameObject caller)
         {
-            PackageLogger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+            Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
             Destroy(collision.gameObject);
         }
 
@@ -28,7 +27,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void DestroyObjectCollidedWith(Collider collision, GameObject caller)
         {
-            PackageLogger.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+            Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
             Destroy(collision.gameObject);
         }
 
@@ -38,7 +37,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="sceneName">The name of the scene as listed in Build Settings</param>
         public static void LoadSceneAsync(string sceneName)
         {
-            PackageLogger.Log("Loading scene " + sceneName + " asynchronously.");
+            Debug.Log("Loading scene " + sceneName + " asynchronously.");
             SceneManager.LoadSceneAsync(sceneName);
         }
 
@@ -111,11 +110,11 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             if(collision.TryGetComponent<TriggerCollider>(out TriggerCollider triggerCollider))
             {
                 triggerCollider.enabled = false;
-                PackageLogger.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
+                Debug.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
             }
             else
             {
-                PackageLogger.LogWarning("No TriggerCollider component found on " + caller.name + ". No trigger deactivated.");
+                Debug.LogWarning("No TriggerCollider component found on " + caller.name + ". No trigger deactivated.");
             }
         }
 
@@ -124,11 +123,11 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             if(collision.TryGetComponent<TriggerCollider2D>(out TriggerCollider2D triggerCollider))
             {
                 triggerCollider.enabled = false;
-                PackageLogger.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
+                Debug.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
             }
             else
             {
-                PackageLogger.LogWarning("No TriggerCollider2D component found on " + caller.name + ". No trigger deactivated.");
+                Debug.LogWarning("No TriggerCollider2D component found on " + caller.name + ". No trigger deactivated.");
             }
         }
 
@@ -140,7 +139,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void LogCollision(Collider collision, GameObject caller)
         {
-            PackageLogger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+            Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
         }
 
         /// <summary>
@@ -151,7 +150,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void LogCollision(Collider2D collision, GameObject caller)
         {
-            PackageLogger.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+            Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
         }
 
 #if UNITY_EDITOR

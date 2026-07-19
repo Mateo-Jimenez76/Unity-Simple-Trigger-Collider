@@ -12,14 +12,6 @@ namespace SimpleTriggerCollider.Editor
         public const string settingsResourcePath = "Simple Trigger Collider/SimpleTriggerColliderSettings";
 
         // --- Package Settings ---
-        [SerializeField] private bool debugLogs;
-        public bool DebugLogsEnabled() => debugLogs;
-
-        [SerializeField] private bool warningLogs;
-        public bool WarningLogsEnabled() => warningLogs;
-
-        [SerializeField] private bool errorLogs;
-        public bool ErrorLogsEnabled() => errorLogs;
 
         [SerializeField] private ColliderType defaultColliderType;
         public ColliderType GetDefaultColliderType() => defaultColliderType;
@@ -63,9 +55,6 @@ namespace SimpleTriggerCollider.Editor
                 settings = CreateInstance<CustomSettings>();
 
                 //Set default values for settings
-                settings.debugLogs = true;
-                settings.warningLogs = true;
-                settings.errorLogs = true;
                 settings.defaultColliderType = ColliderType.Box;
                 settings.defaultCollider2DType = Collider2DType.Box;
 
