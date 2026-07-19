@@ -15,7 +15,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void DestroyObjectCollidedWith(Collider2D collision, GameObject caller)
         {
-            Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+            Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>destroyed</color> <color=cyan>{collision.name}</color> because it collided with <color=cyan>{caller.name}</color>.", caller);
             Destroy(collision.gameObject);
         }
 
@@ -27,7 +27,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void DestroyObjectCollidedWith(Collider collision, GameObject caller)
         {
-            Debug.Log("Destroying " + collision.name + " because it collided with " + caller.name);
+            Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>destroyed</color> <color=cyan>{collision.name}</color> because it collided with <color=cyan>{caller.name}</color>.", caller);
             Destroy(collision.gameObject);
         }
 
@@ -37,7 +37,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="sceneName">The name of the scene as listed in Build Settings</param>
         public static void LoadSceneAsync(string sceneName)
         {
-            Debug.Log("Loading scene " + sceneName + " asynchronously.");
+            Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>loading</color> scene <color=cyan>{sceneName}</color> asynchronously.");
             SceneManager.LoadSceneAsync(sceneName);
         }
 
@@ -45,13 +45,13 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         {
             if (!caller.TryGetComponent(out InstantiationInfo instantiationInfo))
             {
-                Debug.LogError($"Cannot Instantiate object because no {nameof(InstantiationInfo)} component is found on '{caller.name}'",caller);
+                Debug.LogError($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> could not instantiate an object for <color=cyan>{caller.name}</color>, because <color=red>no {nameof(InstantiationInfo)} component was found</color>. Add an {nameof(InstantiationInfo)} component to <color=cyan>{caller.name}</color>.", caller);
                 return;
             }
 
             if(instantiationInfo.ObjectToInstantiate == null)
             {
-                Debug.LogError($"Cannot Instantiate object because no object is assigned to '{nameof(instantiationInfo.ObjectToInstantiate)}' on '{caller.name}'", caller);
+                Debug.LogError($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> could not instantiate an object for <color=cyan>{caller.name}</color>, because <color=red>no object is assigned to {nameof(instantiationInfo.ObjectToInstantiate)}</color>. Assign an object to <color=cyan>{nameof(instantiationInfo.ObjectToInstantiate)}</color> on <color=cyan>{caller.name}</color>.", caller);
                 return;
             }
 
@@ -73,13 +73,13 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         {
             if (!caller.TryGetComponent(out InstantiationInfo instantiationInfo))
             {
-                Debug.LogError($"Cannot Instantiate object because no {nameof(InstantiationInfo)} component is found on '{caller.name}'", caller);
+                Debug.LogError($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> could not instantiate an object for <color=cyan>{caller.name}</color>, because <color=red>no {nameof(InstantiationInfo)} component was found</color>. Add an {nameof(InstantiationInfo)} component to <color=cyan>{caller.name}</color>.", caller);
                 return;
             }
 
             if (instantiationInfo.ObjectToInstantiate == null)
             {
-                Debug.LogError($"Cannot Instantiate object because no object is assigned to '{nameof(instantiationInfo.ObjectToInstantiate)}' on '{caller.name}'", caller);
+                Debug.LogError($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> could not instantiate an object for <color=cyan>{caller.name}</color>, because <color=red>no object is assigned to {nameof(instantiationInfo.ObjectToInstantiate)}</color>. Assign an object to <color=cyan>{nameof(instantiationInfo.ObjectToInstantiate)}</color> on <color=cyan>{caller.name}</color>.", caller);
                 return;
             }
 
@@ -110,11 +110,11 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             if(collision.TryGetComponent<TriggerCollider>(out TriggerCollider triggerCollider))
             {
                 triggerCollider.enabled = false;
-                Debug.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
+                Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>deactivated</color> <color=cyan>{triggerCollider.name}</color> because it collided with <color=cyan>{caller.name}</color>.", triggerCollider);
             }
             else
             {
-                Debug.LogWarning("No TriggerCollider component found on " + caller.name + ". No trigger deactivated.");
+                Debug.LogWarning($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> did not deactivate a trigger, because <color=red>no {nameof(TriggerCollider)} component was found on {collision.name}</color> (collided with <color=cyan>{caller.name}</color>). Add a {nameof(TriggerCollider)} component to <color=cyan>{collision.name}</color> if it should deactivate on collision.", caller);
             }
         }
 
@@ -123,11 +123,11 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             if(collision.TryGetComponent<TriggerCollider2D>(out TriggerCollider2D triggerCollider))
             {
                 triggerCollider.enabled = false;
-                Debug.Log("Deactivated " + triggerCollider.name + " because it collided with " + caller.name);
+                Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>deactivated</color> <color=cyan>{triggerCollider.name}</color> because it collided with <color=cyan>{caller.name}</color>.", triggerCollider);
             }
             else
             {
-                Debug.LogWarning("No TriggerCollider2D component found on " + caller.name + ". No trigger deactivated.");
+                Debug.LogWarning($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> did not deactivate a trigger, because <color=red>no {nameof(TriggerCollider2D)} component was found on {collision.name}</color> (collided with <color=cyan>{caller.name}</color>). Add a {nameof(TriggerCollider2D)} component to <color=cyan>{collision.name}</color> if it should deactivate on collision.", caller);
             }
         }
 
@@ -139,7 +139,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void LogCollision(Collider collision, GameObject caller)
         {
-            Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+            Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=cyan>{collision.name}</color> collided with <color=cyan>{caller.name}</color> at <color=cyan>{collision.transform.position}</color>.", caller);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// <param name="caller">The object that is calling this function</param>
         public static void LogCollision(Collider2D collision, GameObject caller)
         {
-            Debug.Log($"{collision.name} collided with {caller.name}(caller) at {collision.transform.position}.");
+            Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=cyan>{collision.name}</color> collided with <color=cyan>{caller.name}</color> at <color=cyan>{collision.transform.position}</color>.", caller);
         }
 
 #if UNITY_EDITOR
@@ -160,16 +160,16 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             {
                 if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                 {
-                    AssetDatabase.CreateFolder("Assets","Resources");
-                    Debug.Log("Created Resources folder for 'Common Use Case Functions'");
+                    AssetDatabase.CreateFolder("Assets", "Resources");
+                    Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>created</color> the <color=cyan>Assets/Resources</color> folder.");
                 }
 
 
                 //Check that there is a valid location
                 if (!AssetDatabase.IsValidFolder("Assets/Resources/Simple Trigger Collider"))
                 {
-                    AssetDatabase.CreateFolder("Assets/Resources","Simple Trigger Collider");
-                    Debug.Log("<color=yellow>Created</color> <color=cyan>Simple Trigger Collider</color> folder at <color=cyan>Assets/Resources/Simple Trigger Collider</color>");
+                    AssetDatabase.CreateFolder("Assets/Resources", "Simple Trigger Collider");
+                    Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>created</color> the <color=cyan>Simple Trigger Collider</color> folder at <color=cyan>Assets/Resources/Simple Trigger Collider</color>.");
                 }
 
                 //Try to load
@@ -178,7 +178,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
                 //If the settings asset does not exist...
                 if (UseCaseFunctions == null)
                 {
-                    Debug.Log($"<color=yellow>Created '<color=lime>{nameof(CommonUseCaseFunctions)}</color>' asset</color> at <color=cyan>Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset</color>");
+                    Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>created</color> a <color=lime>{nameof(CommonUseCaseFunctions)}</color> asset at <color=cyan>Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset</color>.");
                     UseCaseFunctions = ScriptableObject.CreateInstance<CommonUseCaseFunctions>();
                     AssetDatabase.CreateAsset(UseCaseFunctions, $"Assets/Resources/Simple Trigger Collider/{nameof(CommonUseCaseFunctions)}.asset");
                 }

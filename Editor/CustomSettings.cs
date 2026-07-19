@@ -34,15 +34,15 @@ namespace SimpleTriggerCollider.Editor
             //If not...
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
             {
-                Debug.LogWarning("<color=yellow>Created</color> <color=lime>Resources</color> folder for Simple Trigger Collider settings at <color=cyan>Assets/Resources</color>");
                 //...Create the Resources folder
                 AssetDatabase.CreateFolder("Assets", "Resources");
+                Debug.Log($"<color=lime>{nameof(CustomSettings)}</color> <color=yellow>created</color> the <color=cyan>Assets/Resources</color> folder.");
             }
 
             if (!AssetDatabase.IsValidFolder("Assets/Resources/Simple Trigger Collider"))
             {
                 AssetDatabase.CreateFolder("Assets/Resources", "Simple Trigger Collider");
-                Debug.LogWarning("<color=yellow>Created</color> <color=lime>Simple Trigger Collider</color> folder at <color=cyan>Assets/Resources/Simple Trigger Collider</color>");
+                Debug.Log($"<color=lime>{nameof(CustomSettings)}</color> <color=yellow>created</color> the <color=cyan>Simple Trigger Collider</color> folder at <color=cyan>Assets/Resources/Simple Trigger Collider</color>.");
             }
 
             //Try to load the settings asset
@@ -61,7 +61,7 @@ namespace SimpleTriggerCollider.Editor
                 //Save the settings object as an asset
                 AssetDatabase.CreateAsset(settings, settingsPath);
                 AssetDatabase.SaveAssets();
-                Debug.LogWarning($"<color=yellow>Created</color> <color=lime>Simple Trigger Collider</color> settings object at: <color=cyan>{settingsPath}</color>");
+                Debug.Log($"<color=lime>{nameof(CustomSettings)}</color> <color=yellow>created</color> the <color=cyan>Simple Trigger Collider</color> settings asset at <color=cyan>{settingsPath}</color>.");
             }
 
             return settings;

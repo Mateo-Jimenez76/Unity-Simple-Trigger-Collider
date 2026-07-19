@@ -40,17 +40,17 @@ namespace SimpleTriggerCollider.Runtime
                     }
                     continue;
                 }
-                Debug.LogError($"Multiple <color=lime>{nameof(Collider)}</color> components were found on <color=cyan>{gameObject.name}</color>. <color=yellow>To prevent unintended behavior this script</color> will not automatically assign one as a trigger, <color=red>please do so manually.</color>");
+                Debug.LogError($"<color=lime>{nameof(TriggerCollider)}</color> did not automatically assign a trigger on <color=cyan>{gameObject.name}</color>, because multiple <color=lime>{nameof(Collider)}</color> components were found and <color=red>none is set as a trigger</color>. Manually set <color=cyan>isTrigger</color> to true on the intended <color=lime>{nameof(Collider)}</color>.", this);
                 return;
             }
             else
             {
-                Debug.Log($"No <color=lime>{nameof(Collider)}</color> component found on {gameObject.name}. Attempting to add default <color=lime>{nameof(Collider)}...</color>");
+                Debug.Log($"No <color=lime>{nameof(Collider)}</color> component found on <color=cyan>{gameObject.name}</color>. <color=yellow>Attempting to add</color> a default <color=lime>{nameof(Collider)}</color>.", this);
             }
 
             if (TryGetComponent<Collider2D>(out Collider2D collider))
             {
-                Debug.LogError($"A <color=lime>Collider2D</color> component was found on {gameObject.name}. {nameof(TriggerCollider)} is designed to work with <color=lime>{nameof(Collider)}</color> components only, and this issue cannot be resolved automatically. Please manually remove the <color=lime>{nameof(Collider2D)}</color> and replace it with a <color=lime>{nameof(Collider)}</color>.");
+                Debug.LogError($"<color=lime>{nameof(TriggerCollider)}</color> cannot automatically fix the collider setup on <color=cyan>{gameObject.name}</color>, because <color=red>a {nameof(Collider2D)} component was found and {nameof(TriggerCollider)} only supports {nameof(Collider)} components</color>. Manually remove the <color=lime>{nameof(Collider2D)}</color> component and replace it with a <color=lime>{nameof(Collider)}</color>.", this);
                 return;
             }
 
@@ -61,19 +61,19 @@ namespace SimpleTriggerCollider.Runtime
             switch (settings.GetDefaultColliderType())
             {
                 case (ColliderType.Box):
-                    Debug.Log("<color=yellow>Added</color> a <color=lime>BoxCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    Debug.Log($"<color=yellow>Added</color> a <color=lime>{nameof(BoxCollider)}</color> component to <color=cyan>{gameObject.name}</color> because <color=lime>{nameof(TriggerCollider)}</color> depends on a <color=lime>{nameof(Collider)}</color> component being present. You can change this behavior in the package's settings.", this);
                     gameObject.AddComponent<BoxCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Sphere):
-                    Debug.Log("<color=yellow>Added</color> a <color=lime>SphereCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    Debug.Log($"<color=yellow>Added</color> a <color=lime>{nameof(SphereCollider)}</color> component to <color=cyan>{gameObject.name}</color> because <color=lime>{nameof(TriggerCollider)}</color> depends on a <color=lime>{nameof(Collider)}</color> component being present. You can change this behavior in the package's settings.", this);
                     gameObject.AddComponent<SphereCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Capsule):
-                    Debug.Log("<color=yellow>Added</color> a <color=lime>CapsuleCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    Debug.Log($"<color=yellow>Added</color> a <color=lime>{nameof(CapsuleCollider)}</color> component to <color=cyan>{gameObject.name}</color> because <color=lime>{nameof(TriggerCollider)}</color> depends on a <color=lime>{nameof(Collider)}</color> component being present. You can change this behavior in the package's settings.", this);
                     gameObject.AddComponent<CapsuleCollider>().isTrigger = true;
                     break;
                 case (ColliderType.Mesh):
-                    Debug.Log("<color=yellow>Added</color> a <color=lime>MeshCollider</color> component because <color=lime>TriggerCollider.cs</color> depends on a <color=lime>Collider</color> component being present. You can change this behavior in the package's settings.");
+                    Debug.Log($"<color=yellow>Added</color> a <color=lime>{nameof(MeshCollider)}</color> component to <color=cyan>{gameObject.name}</color> because <color=lime>{nameof(TriggerCollider)}</color> depends on a <color=lime>{nameof(Collider)}</color> component being present. You can change this behavior in the package's settings.", this);
                     gameObject.AddComponent<MeshCollider>().isTrigger = true;
                     break;
             }
