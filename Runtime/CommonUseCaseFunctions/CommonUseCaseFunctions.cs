@@ -97,6 +97,31 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             }
         }
 
+        public void DeactivateTrigger(Collider collision, GameObject caller)
+        {
+            if(caller.TryGetComponent<TriggerCollider>(out TriggerCollider triggerCollider))
+            {
+                triggerCollider.enabled = false;
+                Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>deactivated</color> <color=cyan>{triggerCollider.name}</color> because it collided with <color=cyan>{caller.name}</color>.", triggerCollider);
+            }
+            else
+            {
+                Debug.LogWarning($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> did not deactivate a trigger, because <color=red>no {nameof(TriggerCollider)} component was found on {caller.name}</color>. Add a {nameof(TriggerCollider)} component to <color=cyan>{caller.name}</color> if it should deactivate on collision.", caller);
+            }
+        }
+
+        public void DeactivateTrigger(Collider2D collision, GameObject caller)
+        {
+            if(caller.TryGetComponent<TriggerCollider2D>(out TriggerCollider2D triggerCollider))
+            {
+                triggerCollider.enabled = false;
+                Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>deactivated</color> <color=cyan>{triggerCollider.name}</color> because it collided with <color=cyan>{caller.name}</color>.", triggerCollider);
+            }
+            else
+            {
+                Debug.LogWarning($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> did not deactivate a trigger, because <color=red>no {nameof(TriggerCollider2D)} component was found on {caller.name}</color>. Add a {nameof(TriggerCollider2D)} component to <color=cyan>{caller.name}</color> if it should deactivate on collision.", caller);
+            }
+        }
 
         /// <summary>
         /// Deactivates the trigger associated with the specified collider when a collision occurs.
@@ -105,7 +130,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         /// taken. This method logs the deactivation event for diagnostic purposes.</remarks>
         /// <param name="collision">The collider involved in the collision. Must contain a TriggerCollider component to be deactivated.</param>
         /// <param name="caller">The game object that initiated the collision event.</param>
-        public void DeactivateTrigger(Collider collision, GameObject caller)
+        public void DeactivateTriggerCollidedWith(Collider collision, GameObject caller)
         {
             if(collision.TryGetComponent<TriggerCollider>(out TriggerCollider triggerCollider))
             {
@@ -118,7 +143,14 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             }
         }
 
-        public void DeactivateTrigger(Collider2D collision, GameObject caller)
+        /// <summary>
+        /// Deactivates the trigger associated with the specified collider when a collision occurs.
+        /// </summary>
+        /// <remarks>If the specified collider does not have a TriggerCollider component, no action is
+        /// taken. This method logs the deactivation event for diagnostic purposes.</remarks>
+        /// <param name="collision">The collider involved in the collision. Must contain a TriggerCollider component to be deactivated.</param>
+        /// <param name="caller">The game object that initiated the collision event.</param>
+        public void DeactivateTriggerCollidedWith(Collider2D collision, GameObject caller)
         {
             if(collision.TryGetComponent<TriggerCollider2D>(out TriggerCollider2D triggerCollider))
             {
