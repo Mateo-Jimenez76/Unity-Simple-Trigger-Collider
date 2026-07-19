@@ -10,9 +10,6 @@ namespace SimpleTriggerCollider.Editor
 
         public const string mySettingsPath = "Assets/Resources/SimpleTriggerColliderSettings.asset";
 
-        SerializedProperty debugLogsProp;
-        SerializedProperty warningLogsProp;
-        SerializedProperty errorLogsProp;
         SerializedProperty defaultColliderTypeProp;
         SerializedProperty defaultCollider2DTypeProp;
 
@@ -31,9 +28,6 @@ namespace SimpleTriggerCollider.Editor
         {
             SerializedSettings = CustomSettings.GetSerializedSettings();
 
-            debugLogsProp = SerializedSettings.FindProperty("debugLogs");
-            warningLogsProp = SerializedSettings.FindProperty("warningLogs");
-            errorLogsProp = SerializedSettings.FindProperty("errorLogs");
             defaultColliderTypeProp = SerializedSettings.FindProperty("defaultColliderType");
             defaultCollider2DTypeProp = SerializedSettings.FindProperty("defaultCollider2DType");
         }
@@ -42,15 +36,6 @@ namespace SimpleTriggerCollider.Editor
         public override void OnGUI(string searchContext)
         {
             SerializedSettings.Update();
-
-            EditorGUILayout.Space();
-            GUILayout.Label("Logging", EditorStyles.boldLabel);
-
-            EditorGUILayout.HelpBox("The logging settings determine what types of logs the package will output. Enabling more log types can be useful for debugging, but if they become annoying feel free to disable them. \"Note that errors, and warnings that are essential to prevent breaking the package completely are still logged to the console.", MessageType.Info);
-
-            EditorGUILayout.PropertyField(debugLogsProp, new GUIContent("Debug Logs", "Enables or disables debug logs."));
-            EditorGUILayout.PropertyField(warningLogsProp, new GUIContent("Warning Logs", "Enables or disables warning logs."));
-            EditorGUILayout.PropertyField(errorLogsProp, new GUIContent("Error Logs", "Enables or disables error logs."));
 
             EditorGUILayout.Space();
             GUILayout.Label("Default Colliders", EditorStyles.boldLabel);
