@@ -11,7 +11,7 @@
     {
       "displayName": "Collectible Item",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a collectible item.",
-      "path": "Samples~/Collectible Item"
+      "path": "Samples/Collectible Item/Collectible Item Sample"
     },
     {
       "displayName": "Enemy Alert",
