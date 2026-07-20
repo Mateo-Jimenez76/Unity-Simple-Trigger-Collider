@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.2...v3.1.0) (2026-07-20)
+
+
+### Features
+
+* Mouse Collider 3D ([b3f59e7](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/b3f59e7fba1564cffa86c2aeabe45352266ca36d))
+
+
+
 ## [3.0.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.1...v3.0.2) (2026-07-20)
 
 
@@ -36,15 +45,6 @@
 ### Bug Fixes
 
 * **Common Use Case:** Misleading debug logs during asset creation ([905fadd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/905fadd5900d597aed05ae0fadbbfeeccfd555ea))
-
-
-
-# [2.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.2...v2.1.0) (2026-07-18)
-
-
-### Features
-
-* **Common Use Case:** Instantiate object ([567a8b7](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/567a8b76fcfb5225e3dd7157156bb2c2d9d54799))
 
 
 
