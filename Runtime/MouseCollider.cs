@@ -3,8 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 
-[RequireComponent(typeof(Collider2D))]
-public class MouseCollider2D : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class MouseCollider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private bool setupCheck = true;
 
@@ -20,18 +19,18 @@ public class MouseCollider2D : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (Camera.main == null)
         {
-            Debug.LogError($"No camera is in the scene! This script requires a camera with the {nameof(Physics2DRaycaster)} component.");
+            Debug.LogError($"No camera is in the scene! This script requires a camera with the {nameof(PhysicsRaycaster)} component.");
             gameObject.SetActive(false);
             return;
         }
 
-        if(!Camera.main.TryGetComponent(out Physics2DRaycaster raycaster))
+        if (!Camera.main.TryGetComponent(out PhysicsRaycaster raycaster))
         {
-            Debug.LogWarning($"Camera '{Camera.main}' does not have the required {nameof(Physics2DRaycaster)} component, adding it now...");
-            Camera.main.gameObject.AddComponent<Physics2DRaycaster>();
+            Debug.LogWarning($"Camera '{Camera.main}' does not have the required {nameof(PhysicsRaycaster)} component, adding it now...");
+            Camera.main.gameObject.AddComponent<PhysicsRaycaster>();
         }
 
-        if(EventSystem.current == null)
+        if (EventSystem.current == null)
         {
             Debug.LogWarning($"No EventSystem is in the scene! This script requires an EventSystem with the {nameof(InputSystemUIInputModule)} component. Adding it now...");
             GameObject eventSystem = new("EventSystem");
