@@ -19,20 +19,34 @@ public class MouseCollider : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (Camera.main == null)
         {
-            Debug.LogError($"No camera is in the scene! This script requires a camera with the {nameof(PhysicsRaycaster)} component.");
+            Debug.LogError(
+                $"<color=lime>{nameof(MouseCollider)}</color> " +
+                $"<color=yellow>disabled</color> <color=cyan>{gameObject.name}</color>, because " +
+                $"<color=red>no camera is present in the scene</color>, and this script requires one with a " +
+                $"<color=cyan>{nameof(PhysicsRaycaster)}</color> component. Add a camera to the scene.",
+                this);
             gameObject.SetActive(false);
             return;
         }
 
         if (!Camera.main.TryGetComponent(out PhysicsRaycaster raycaster))
         {
-            Debug.LogWarning($"Camera '{Camera.main}' does not have the required {nameof(PhysicsRaycaster)} component, adding it now...");
+            Debug.LogWarning(
+                $"<color=lime>{nameof(MouseCollider)}</color> " +
+                $"<color=yellow>added</color> a <color=cyan>{nameof(PhysicsRaycaster)}</color> component to " +
+                $"<color=cyan>{Camera.main.name}</color>, because <color=red>it was missing one</color>. " +
+                $"Add a {nameof(PhysicsRaycaster)} to the main camera manually to avoid this at runtime.",
+                Camera.main);
             Camera.main.gameObject.AddComponent<PhysicsRaycaster>();
         }
 
         if (EventSystem.current == null)
         {
-            Debug.LogWarning($"No EventSystem is in the scene! This script requires an EventSystem with the {nameof(InputSystemUIInputModule)} component. Adding it now...");
+            Debug.LogWarning(
+                $"<color=lime>{nameof(MouseCollider)}</color> " +
+                $"<color=yellow>created</color> a new <color=cyan>EventSystem</color> with an " +
+                $"<color=cyan>{nameof(InputSystemUIInputModule)}</color>, because <color=red>no EventSystem was present in the scene</color>. " +
+                $"Add an EventSystem to the scene manually to avoid this at runtime.");
             GameObject eventSystem = new("EventSystem");
             eventSystem.AddComponent<EventSystem>();
             eventSystem.AddComponent<InputSystemUIInputModule>();
