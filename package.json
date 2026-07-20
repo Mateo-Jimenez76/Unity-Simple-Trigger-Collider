@@ -1,6 +1,6 @@
 {
   "name": "com.mateojimenez.triggercollider",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "displayName": "Simple Trigger Colliders",
   "description": "A flexible and fast way to implement trigger colliders into your projects.",
   "unity": "6000.2",

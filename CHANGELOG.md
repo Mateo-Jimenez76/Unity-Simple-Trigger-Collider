@@ -1,3 +1,12 @@
+## [3.0.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.1...v3.0.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* **Samples:** Samples not importing with correct file structure ([2c439fb](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/2c439fb7b1b74676d8042327a3f31911bd890e9c))
+
+
+
 ## [3.0.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.0...v3.0.1) (2026-07-20)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * **Common Use Case:** Instantiate object ([567a8b7](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/567a8b76fcfb5225e3dd7157156bb2c2d9d54799))
-
-
-
-## [2.0.2](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.1...v2.0.2) (2026-06-13)
-
-
-### Bug Fixes
-
-* **Common Use Case Functions:** Editor references erroring in builds ([e5e9a34](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/e5e9a3493960eac9f40d07fb968f7064193eb880))
 
 
 
