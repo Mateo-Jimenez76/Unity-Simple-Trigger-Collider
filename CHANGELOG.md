@@ -1,3 +1,35 @@
+## [3.0.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.0...v3.0.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* **Samples:** GUID Conflict on import ([60c8afb](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/60c8afb56f48cee695745b137a12488e65662cc4))
+
+
+
+# [3.0.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.1.1...v3.0.0) (2026-07-19)
+
+
+### Features
+
+* **Common Use Case:** DeactivateTriggerCollidedWith function added ([4ef9868](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/4ef9868bc91f7a10203d4d83bfe8c7843375a01b))
+
+
+### BREAKING CHANGES
+
+* **Common Use Case:** DeactivateTrigger now deactivates the trigger that calls it, NOT the trigger that collided with it! Use DeactiveTriggerCollidedWith instead.
+
+
+
+## [2.1.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.1.0...v2.1.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* **Common Use Case:** Misleading debug logs during asset creation ([905fadd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/905fadd5900d597aed05ae0fadbbfeeccfd555ea))
+
+
+
 # [2.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.2...v2.1.0) (2026-07-18)
 
 
@@ -13,38 +45,6 @@
 ### Bug Fixes
 
 * **Common Use Case Functions:** Editor references erroring in builds ([e5e9a34](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/e5e9a3493960eac9f40d07fb968f7064193eb880))
-
-
-
-## [2.0.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.0.0...v2.0.1) (2026-06-13)
-
-
-### Bug Fixes
-
-* **Trigger Colliders:** Editor references preventing project builds ([8468d00](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/8468d00bb36102cc9a1bf1cf5c83b51316e1d74a))
-
-
-
-# [2.0.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.9.0...v2.0.0) (2026-06-13)
-
-
-### Code Refactoring
-
-* Move resource assets into package subdirectory ([022c8ee](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/022c8eee6ad204b14c49ec1cd895fd05afcd40e0))
-
-
-### BREAKING CHANGES
-
-* The existing assets stored in the resources folder will no longer be used. I recommend deleting them to avoid future confusion.
-
-
-
-# [1.9.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v1.8.0...v1.9.0) (2026-03-13)
-
-
-### Features
-
-* **Tool Tips:** Add tooltips to ignoreLayers property ([941d73f](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/941d73f6731a65c58bcf5df61fedc3f1d882f54b))
 
 
 

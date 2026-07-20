@@ -1,6 +1,6 @@
 {
   "name": "com.mateojimenez.triggercollider",
-  "version": "2.1.0",
+  "version": "3.0.1",
   "displayName": "Simple Trigger Colliders",
   "description": "A flexible and fast way to implement trigger colliders into your projects.",
   "unity": "6000.2",
@@ -11,26 +11,17 @@
     {
       "displayName": "Collectible Item",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a collectible item.",
-      "path": "Samples/Collectible Item",
-      "dependencies": {
-        "com.unity.cinemachine": "3.1.5"
-      }
+      "path": "Samples/Collectible Item"
     },
     {
       "displayName": "Enemy Alert",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create an enemy alert.",
-      "path": "Samples/Enemy Alert",
-      "dependencies": {
-        "com.unity.cinemachine": "3.1.5"
-      }
+      "path": "Samples/Enemy Alert"
     },
     {
       "displayName": "Speed Boost",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a speed boost.",
-      "path": "Samples/Speed Boost",
-      "dependencies": {
-        "com.unity.cinemachine": "3.1.5"
-      }
+      "path": "Samples/Speed Boost"
     }
   ],
   "keywords": [
