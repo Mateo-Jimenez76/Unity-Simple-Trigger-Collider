@@ -16,12 +16,12 @@
     {
       "displayName": "Enemy Alert",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create an enemy alert.",
-      "path": "Samples/Enemy Alert"
+      "path": "Samples~/Enemy Alert"
     },
     {
       "displayName": "Speed Boost",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a speed boost.",
-      "path": "Samples/Speed Boost"
+      "path": "Samples~/Speed Boost"
     }
   ],
   "keywords": [
