@@ -2,7 +2,7 @@
   "name": "com.mateojimenez.triggercollider",
   "version": "3.1.0",
   "displayName": "Simple Trigger Colliders",
-  "description": "A flexible and fast way to implement trigger colliders into your projects. If you cannot access the online documentation, a local copy can be found at Package/Simple Trigger Colliders/docs",
+  "description": "A flexible and fast way to implement trigger colliders into your projects. If you cannot access the online documentation, a local copy can be found at Packages/Simple Trigger Colliders/docs",
   "unity": "6000.2",
   "unityRelease": "",
   "documentationUrl": "https://mateo-jimenez76.github.io/docs-pages/Simple-Trigger-Collider/index.html",
