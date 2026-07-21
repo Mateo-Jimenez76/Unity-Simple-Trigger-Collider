@@ -41,6 +41,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             SceneManager.LoadSceneAsync(sceneName);
         }
 
+        [RequiresInfoComponent(typeof(InstantiationInfo))]
         public static void Instantiate(Collider2D collision, GameObject caller)
         {
             if (!caller.TryGetComponent(out InstantiationInfo instantiationInfo))

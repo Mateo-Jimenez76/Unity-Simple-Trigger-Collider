@@ -11,9 +11,10 @@ namespace SimpleTriggerCollider.Runtime
     {
         // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
         // This can be useful for debugging especially when multiple triggers are in a scene
-        [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerEnter;
-        [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerStay;
-        [SerializeField] private UnityEvent<Collider2D, GameObject> onTriggerExit;
+        //[SerializeField] private UnityEvent<Collider2D, GameObject> triggerEvents.onTriggerEnter;
+        //[SerializeField] private UnityEvent<Collider2D, GameObject> triggerEvents.onTriggerStay;
+        //[SerializeField] private UnityEvent<Collider2D, GameObject> triggerEvents.onTriggerExit;
+        [SerializeField] private UnityTriggerEvent2D triggerEvents;
         [Tooltip("Any object with the following checked layers will not trigger the events.")]
         [SerializeField] private LayerMask ignoreLayers;
 
@@ -83,6 +84,7 @@ namespace SimpleTriggerCollider.Runtime
             return true;
         }
 #endif
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (CollidedWithSelf(collision))
@@ -93,7 +95,7 @@ namespace SimpleTriggerCollider.Runtime
             {
                 return;
             }
-            onTriggerEnter.Invoke(collision, gameObject);
+            triggerEvents.onTriggerEnter.Invoke(collision, gameObject);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -106,7 +108,7 @@ namespace SimpleTriggerCollider.Runtime
             {
                 return;
             }
-            onTriggerStay.Invoke(collision, gameObject);
+            triggerEvents.onTriggerStay.Invoke(collision, gameObject);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -119,7 +121,7 @@ namespace SimpleTriggerCollider.Runtime
             {
                 return;
             }
-            onTriggerExit.Invoke(collision, gameObject);
+            triggerEvents.onTriggerExit.Invoke(collision, gameObject);
         }
 
         private bool CollidedWithSelf(Collider2D collision)

@@ -2,7 +2,8 @@
     "name": "Runtime.CommonUseCaseFunctions",
     "rootNamespace": "",
     "references": [
-        "SimpleTriggerColliders.Runtime"
+        "SimpleTriggerColliders.Runtime",
+        "SimpleTriggerColliders.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

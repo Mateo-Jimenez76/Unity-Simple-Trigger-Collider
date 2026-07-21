@@ -2,7 +2,9 @@
     "name": "SimpleTriggerColliders.Editor.Editors",
     "rootNamespace": "",
     "references": [
-        "GUID:33f4e64b9395ca04796373675888c357"
+        "GUID:33f4e64b9395ca04796373675888c357",
+        "GUID:6e86d7c8f3dabe24c87a68162b8b5954",
+        "GUID:02b886f101621bf488925e05bf7c5c58"
     ],
     "includePlatforms": [
         "Editor"
