@@ -3,27 +3,54 @@ using UnityEngine;
 using System.Reflection;
 using System;
 using SimpleTriggerCollider.Runtime;
+using SimpleTriggerCollider.Runtime.CommonUseCaseFunctions;
 
 [CustomEditor(typeof(TriggerCollider2D))]
 public class EventTriggerControllerEditor : Editor
 {
+    const string PERSISTANTCALLSPATH = "m_PersistentCalls.m_Calls";
+
+    new GameObject target;
+    
+    SerializedProperty onTriggerEnterProp;
+    SerializedProperty onTriggerStayProp;
+    SerializedProperty onTriggerExitProp;
+
+    MethodInfo[] methods;
+    private void OnEnable()
+    {
+        onTriggerEnterProp = serializedObject.FindProperty("onTriggerEnter");
+        onTriggerStayProp = serializedObject.FindProperty("onTriggerStay");
+        onTriggerExitProp = serializedObject.FindProperty("onTriggerExit");
+
+        target = ((TriggerCollider2D)base.target).gameObject;
+
+        methods = typeof(CommonUseCaseFunctions).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly);
+    }
+
     public override void OnInspectorGUI()
     {
-        // Draw the default inspector fields (like ignoreLayers and triggerEvents)
         DrawDefaultInspector();
-
-        // Inspect onTriggerEnter (or stay/exit) inside triggerEvents
-        SerializedProperty onTriggerEnterProp = serializedObject.FindProperty("onTriggerEnter");
 
         if (onTriggerEnterProp != null)
         {
             CheckCalls(onTriggerEnterProp);
         }
+
+        if (onTriggerStayProp != null)
+        {
+            CheckCalls(onTriggerStayProp);
+        }
+
+        if (onTriggerExitProp != null)
+        {
+            CheckCalls(onTriggerExitProp);
+        }
     }
 
     private void CheckCalls(SerializedProperty eventProp)
     {
-        SerializedProperty callsProp = eventProp.FindPropertyRelative("m_PersistentCalls.m_Calls");
+        SerializedProperty callsProp = eventProp.FindPropertyRelative(PERSISTANTCALLSPATH);
         if (callsProp == null) return;
 
         for (int i = 0; i < callsProp.arraySize; i++)
@@ -32,55 +59,52 @@ public class EventTriggerControllerEditor : Editor
             string methodName = call.FindPropertyRelative("m_MethodName").stringValue;
             UnityEngine.Object targetObj = call.FindPropertyRelative("m_Target").objectReferenceValue;
 
-            if (targetObj != null && !string.IsNullOrEmpty(methodName))
+            if(targetObj != null && targetObj.GetType() != typeof(CommonUseCaseFunctions))
             {
-                CheckAndRenderComponentRequirement(targetObj, methodName);
+                continue;
+            }
+
+            if (!string.IsNullOrEmpty(methodName))
+            {
+                CheckAndRenderComponentRequirement(methodName);
             }
         }
     }
 
-    private void CheckAndRenderComponentRequirement(UnityEngine.Object targetObj, string methodName)
+    private void CheckAndRenderComponentRequirement(string methodName)
     {
-        Type targetType = targetObj.GetType();
-
-        // 1. Fetch all methods on the target matching the name and visibility flags
-        MethodInfo[] methods = targetType.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-
-        // 2. Iterate through all overloads matching methodName
+        //Iterate through all overloads matching methodName
         foreach (MethodInfo methodInfo in methods)
         {
             if (methodInfo.Name != methodName) continue;
 
-            // Check if this specific overload has your custom attribute
             var attribute = methodInfo.GetCustomAttribute<RequiresInfoComponentAttribute>();
-            if (attribute != null)
+
+            if(attribute == null)
             {
-                Type requiredType = attribute.RequiredComponentType;
+                return;
+            }
 
-                GameObject targetGO = ((TriggerCollider2D)target).gameObject;
+            Type requiredType = attribute.RequiredComponentType;
 
-                if (targetGO != null && targetGO.GetComponent(requiredType) == null)
-                {
-                    EditorGUILayout.BeginVertical("box");
-                    EditorGUILayout.HelpBox(
-                        $"Function '{methodName}' requires the '{requiredType.Name}' component on '{targetGO.name}'.",
-                        MessageType.Warning);
-
-                    if (GUILayout.Button($"Add {requiredType.Name} to {targetGO.name}"))
-                    {
-                        Undo.AddComponent(targetGO, requiredType);
-                        EditorUtility.SetDirty(targetGO);
-                    }
-                    EditorGUILayout.EndVertical();
-                }
-                else if (targetGO != null)
-                {
-                    EditorGUILayout.HelpBox($"✓ '{methodName}' is linked to parameters in '{requiredType.Name}'.", MessageType.Info);
-                }
-
-                // Found a matching attribute overload; break unless you allow multiple attributes across overloads
+            if(target.GetComponent(requiredType) != null)
+            {
+                EditorGUILayout.HelpBox($"✓ '{methodName}' is linked to parameters in '{requiredType.Name}'.", MessageType.Info);
                 break;
             }
+
+            EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.HelpBox(
+                $"Function '{methodName}' requires the '{requiredType.Name}' component on '{target.name}'.",
+                MessageType.Warning);
+
+            if (GUILayout.Button($"Add {requiredType.Name} to {target.name}"))
+            {
+                Undo.AddComponent(target, requiredType);
+                EditorUtility.SetDirty(target);
+            }
+            EditorGUILayout.EndVertical();
+            break;
         }
     }
 }
