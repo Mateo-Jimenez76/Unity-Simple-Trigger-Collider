@@ -88,15 +88,7 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!enabled)
-            {
-                return;
-            }
-            if (CollidedWithSelf(collision))
-            {
-                return;
-            }
-            if((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            if (!CanCollide(collision))
             {
                 return;
             }
@@ -105,15 +97,7 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (!enabled)
-            {
-                return;
-            }
-            if (CollidedWithSelf(collision))
-            {
-                return;
-            }
-            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            if (!CanCollide(collision))
             {
                 return;
             }
@@ -122,19 +106,28 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (!enabled)
-            {
-                return;
-            }
-            if (CollidedWithSelf(collision))
-            {
-                return;
-            }
-            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            if (!CanCollide(collision))
             {
                 return;
             }
             onTriggerExit.Invoke(collision, gameObject);
+        }
+
+        private bool CanCollide(Collider2D collision)
+        {
+            if (!enabled)
+            {
+                return false;
+            }
+            if (CollidedWithSelf(collision))
+            {
+                return false;
+            }
+            if ((ignoreLayers.value & (1 << collision.gameObject.layer)) != 0)
+            {
+                return false;
+            }
+            return true;
         }
 
         private bool CollidedWithSelf(Collider2D collision)
