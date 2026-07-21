@@ -70,6 +70,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
             }
         }
 
+        [RequiresInfoComponent(typeof(InstantiationInfo))]
         public static void Instantiate(Collider collision, GameObject caller)
         {
             if (!caller.TryGetComponent(out InstantiationInfo instantiationInfo))
