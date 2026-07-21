@@ -1,3 +1,12 @@
+# [3.2.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.1.0...v3.2.0) (2026-07-21)
+
+
+### Features
+
+* **Trigger Colliders:** New custom inspectors ([6563214](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/6563214e331ee02006c5203a9c152389149182ba))
+
+
+
 # [3.1.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.2...v3.1.0) (2026-07-20)
 
 
@@ -36,15 +45,6 @@
 ### BREAKING CHANGES
 
 * **Common Use Case:** DeactivateTrigger now deactivates the trigger that calls it, NOT the trigger that collided with it! Use DeactiveTriggerCollidedWith instead.
-
-
-
-## [2.1.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.1.0...v2.1.1) (2026-07-19)
-
-
-### Bug Fixes
-
-* **Common Use Case:** Misleading debug logs during asset creation ([905fadd](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/905fadd5900d597aed05ae0fadbbfeeccfd555ea))
 
 
 
