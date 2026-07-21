@@ -18,43 +18,21 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private LayerMask ignoreLayers;
 
 #if UNITY_EDITOR
-        private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
-
         private List<Collider2D> collider2DList = new();
-        private void _OnValidate()
+        private void Reset()
         {
-            if (this == null)
+            if (IsTriggerPresent())
             {
                 return;
             }
-            GetComponents<Collider2D>(collider2DList);
+            Debug.Log($"No trigger <color=lime>{nameof(Collider2D)}</color> component found on <color=cyan>{gameObject.name}</color>. <color=yellow>Attempting to add</color> a default <color=lime>{nameof(Collider2D)}</color>.", this);
+            AutoAddCollider();
+        }
 
-            if (collider2DList.Count > 0)
-            {
-                foreach (Collider2D currentCollider in collider2DList)
-                {
-                    if (currentCollider.isTrigger)
-                    {
-                        return;
-                    }
-                    continue;
-                }
-                Debug.LogError($"<color=lime>{nameof(TriggerCollider2D)}</color> did not automatically assign a trigger on <color=cyan>{gameObject.name}</color>, because multiple <color=lime>{nameof(Collider2D)}</color> components were found and <color=red>none is set as a trigger</color>. Manually set <color=cyan>isTrigger</color> to true on the intended <color=lime>{nameof(Collider2D)}</color>.", this);
-                return;
-            }
-            else
-            {
-                Debug.Log($"No <color=lime>{nameof(Collider2D)}</color> component found on <color=cyan>{gameObject.name}</color>. <color=yellow>Attempting to add</color> a default <color=lime>{nameof(Collider2D)}</color>.", this);
-            }
-
-            if (TryGetComponent<Collider>(out Collider collider))
-            {
-                Debug.LogError($"<color=lime>{nameof(TriggerCollider2D)}</color> cannot automatically fix the collider setup on <color=cyan>{gameObject.name}</color>, because <color=red>a {nameof(Collider)} component was found and {nameof(TriggerCollider2D)} only supports {nameof(Collider2D)} components</color>. Manually remove the <color=lime>{nameof(Collider)}</color> component and replace it with a <color=lime>{nameof(Collider2D)}</color>.", this);
-                return;
-            }
-
+        private void AutoAddCollider()
+        {
             //Load Package Settings
-            var settings = Resources.Load<CustomSettings>(CustomSettings.settingsResourcePath); 
+            var settings = Resources.Load<CustomSettings>(CustomSettings.settingsResourcePath);
 
             //Check for what kind of Collider2D to create
             switch (settings.GetDefaultCollider2DType())
@@ -76,6 +54,33 @@ namespace SimpleTriggerCollider.Runtime
                     gameObject.AddComponent<EdgeCollider2D>().isTrigger = true;
                     break;
             }
+        }
+
+        private bool IsTriggerPresent()
+        {
+            if (TryGetComponent<Collider>(out Collider collider))
+            {
+                Debug.LogError($"<color=lime>{nameof(TriggerCollider2D)}</color> cannot automatically fix the collider setup on <color=cyan>{gameObject.name}</color>, because <color=red>a {nameof(Collider)} component was found and {nameof(TriggerCollider2D)} only supports {nameof(Collider2D)} components</color>. Manually remove the <color=lime>{nameof(Collider)}</color> component and replace it with a <color=lime>{nameof(Collider2D)}</color>.", this);
+                return false;
+            }
+
+            GetComponents(collider2DList);
+
+            if (collider2DList.Count > 0)
+            {
+                foreach (Collider2D currentCollider in collider2DList)
+                {
+                    if (currentCollider.isTrigger)
+                    {
+                        return true;
+                    }
+                    continue;
+                }
+                Debug.LogError($"<color=lime>{nameof(TriggerCollider2D)}</color> did not automatically assign a trigger on <color=cyan>{gameObject.name}</color>, because multiple <color=lime>{nameof(Collider2D)}</color> components were found and <color=red>none is set as a trigger</color>. Manually set <color=cyan>isTrigger</color> to true on the intended <color=lime>{nameof(Collider2D)}</color>.", this);
+                return false;
+            }
+
+            return true;
         }
 #endif
         private void OnTriggerEnter2D(Collider2D collision)
