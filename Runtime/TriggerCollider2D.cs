@@ -18,6 +18,7 @@ namespace SimpleTriggerCollider.Runtime
         [Tooltip("Any object with the following checked layers will not trigger the events.")]
         [SerializeField] private LayerMask ignoreLayers;
 
+        private new bool enabled = true;
 #if UNITY_EDITOR
         private List<Collider2D> collider2DList = new();
         private void Reset()
@@ -87,6 +88,10 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (CollidedWithSelf(collision))
             {
                 return;
@@ -100,6 +105,10 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerStay2D(Collider2D collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (CollidedWithSelf(collision))
             {
                 return;
@@ -113,6 +122,10 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerExit2D(Collider2D collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (CollidedWithSelf(collision))
             {
                 return;
@@ -127,6 +140,11 @@ namespace SimpleTriggerCollider.Runtime
         private bool CollidedWithSelf(Collider2D collision)
         {
             return collision.gameObject == gameObject;
+        }
+
+        public void SetActive(bool value)
+        {
+            enabled = value;
         }
     }
 }

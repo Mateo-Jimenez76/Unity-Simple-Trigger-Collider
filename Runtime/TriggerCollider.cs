@@ -18,7 +18,8 @@ namespace SimpleTriggerCollider.Runtime
         [SerializeField] private UnityEvent<Collider, GameObject> onTriggerExit;
         [Tooltip("Any object with the following checked layers will not trigger the events.")]
         [SerializeField] private LayerMask ignoreLayers;
-
+        
+        private new bool enabled = true;
 #if UNITY_EDITOR
         private List<Collider> colliderList = new();
         private void Reset()
@@ -83,6 +84,10 @@ namespace SimpleTriggerCollider.Runtime
 #endif
         private void OnTriggerEnter(Collider collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (CollidedWithSelf(collision))
             {
                 return;
@@ -96,6 +101,10 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerStay(Collider collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (CollidedWithSelf(collision))
             {
                 return;
@@ -109,6 +118,10 @@ namespace SimpleTriggerCollider.Runtime
 
         private void OnTriggerExit(Collider collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (CollidedWithSelf(collision))
             {
                 return;
@@ -123,6 +136,10 @@ namespace SimpleTriggerCollider.Runtime
         private bool CollidedWithSelf(Collider collision)
         {
             return collision.gameObject == gameObject;
+        }
+        public void SetActive(bool value)
+        {
+            enabled = value;
         }
     }
 }

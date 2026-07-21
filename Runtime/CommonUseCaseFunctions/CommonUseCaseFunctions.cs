@@ -102,7 +102,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         {
             if(caller.TryGetComponent<TriggerCollider>(out TriggerCollider triggerCollider))
             {
-                triggerCollider.enabled = false;
+                triggerCollider.SetActive(false);
                 Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>deactivated</color> <color=cyan>{triggerCollider.name}</color> because it collided with <color=cyan>{caller.name}</color>.", triggerCollider);
             }
             else
@@ -115,7 +115,7 @@ namespace SimpleTriggerCollider.Runtime.CommonUseCaseFunctions
         {
             if(caller.TryGetComponent<TriggerCollider2D>(out TriggerCollider2D triggerCollider))
             {
-                triggerCollider.enabled = false;
+                triggerCollider.SetActive(false);
                 Debug.Log($"<color=lime>{nameof(CommonUseCaseFunctions)}</color> <color=yellow>deactivated</color> <color=cyan>{triggerCollider.name}</color> because it collided with <color=cyan>{caller.name}</color>.", triggerCollider);
             }
             else
