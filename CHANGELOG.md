@@ -1,3 +1,12 @@
+## [3.2.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.2.0...v3.2.1) (2026-07-21)
+
+
+### Bug Fixes
+
+* **Trigger Colliders:** DeactivateTrigger not working as expected ([41cb855](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/41cb855fea21ac544f2a6fd417bb21baad5bd7d2))
+
+
+
 # [3.2.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.1.0...v3.2.0) (2026-07-21)
 
 
@@ -31,20 +40,6 @@
 ### Bug Fixes
 
 * **Samples:** GUID Conflict on import ([60c8afb](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/60c8afb56f48cee695745b137a12488e65662cc4))
-
-
-
-# [3.0.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v2.1.1...v3.0.0) (2026-07-19)
-
-
-### Features
-
-* **Common Use Case:** DeactivateTriggerCollidedWith function added ([4ef9868](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/4ef9868bc91f7a10203d4d83bfe8c7843375a01b))
-
-
-### BREAKING CHANGES
-
-* **Common Use Case:** DeactivateTrigger now deactivates the trigger that calls it, NOT the trigger that collided with it! Use DeactiveTriggerCollidedWith instead.
 
 
 
