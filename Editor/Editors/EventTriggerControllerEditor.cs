@@ -12,12 +12,9 @@ public class EventTriggerControllerEditor : Editor
         // Draw the default inspector fields (like ignoreLayers and triggerEvents)
         DrawDefaultInspector();
 
-        // Get the triggerEvents property from TriggerCollider2D
-        SerializedProperty triggerEventsProp = serializedObject.FindProperty("triggerEvents");
-        if (triggerEventsProp == null) return;
-
         // Inspect onTriggerEnter (or stay/exit) inside triggerEvents
-        SerializedProperty onTriggerEnterProp = triggerEventsProp.FindPropertyRelative("onTriggerEnter");
+        SerializedProperty onTriggerEnterProp = serializedObject.FindProperty("onTriggerEnter");
+
         if (onTriggerEnterProp != null)
         {
             CheckCalls(onTriggerEnterProp);
