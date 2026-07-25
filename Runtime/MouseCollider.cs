@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.UI;
 
 namespace SimpleTriggerCollider.Runtime 
 {
+    [AddComponentMenu("Physics/Mouse Collider")]
     public class MouseCollider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField] private bool setupCheck = true;

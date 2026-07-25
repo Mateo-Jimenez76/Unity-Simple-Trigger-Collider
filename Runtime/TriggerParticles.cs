@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 namespace SimpleTriggerCollider.Runtime
 {
+    [AddComponentMenu("Effects/Trigger Particles")]
     [RequireComponent(typeof(ParticleSystem))]
     public class TriggerParticles : MonoBehaviour
     {

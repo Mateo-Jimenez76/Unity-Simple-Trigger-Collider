@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.UI;
 
 namespace SimpleTriggerCollider.Runtime 
 {
+    [AddComponentMenu("Physics 2D/Mouse Collider 2D")]
     [RequireComponent(typeof(Collider2D))]
     public class MouseCollider2D : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {

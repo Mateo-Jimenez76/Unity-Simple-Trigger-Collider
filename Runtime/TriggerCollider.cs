@@ -9,6 +9,7 @@ using SimpleTriggerCollider.Editor;
 #endif
 namespace SimpleTriggerCollider.Runtime
 {
+    [AddComponentMenu("Physics/Trigger Collider")]
     public class TriggerCollider : MonoBehaviour
     {
         // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions

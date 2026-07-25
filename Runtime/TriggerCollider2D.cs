@@ -7,6 +7,7 @@ using Collider2DType = SimpleTriggerCollider.Editor.CustomSettings.Collider2DTyp
 #endif
 namespace SimpleTriggerCollider.Runtime
 {
+    [AddComponentMenu("Physics 2D/Trigger Collider 2D")]
     public class TriggerCollider2D : MonoBehaviour
     {
         // The GameObject argument is used to pass the caller object(the object this script is attached to) to the dynamic functions
