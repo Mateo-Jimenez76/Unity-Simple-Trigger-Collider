@@ -22,6 +22,11 @@
       "displayName": "Speed Boost",
       "description": "Contains a sample scene showcasing how to use the trigger collider to create a speed boost.",
       "path": "Samples~/Speed Boost"
+    },
+    {
+      "displayName": "Mouse Trigger",
+      "description": "A sample scene display the functions of the three events invoked by the Mouse Trigger component.",
+      "path": "Samples~/Mouse Trigger"
     }
   ],
   "keywords": [
