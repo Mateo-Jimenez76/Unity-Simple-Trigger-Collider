@@ -1,3 +1,12 @@
+# [3.3.0](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.2.1...v3.3.0) (2026-08-09)
+
+
+### Features
+
+* Add sample for Mouse Trigger component ([7f9e307](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/7f9e30790d2693b135f97cbbb39af22a02cedf52))
+
+
+
 ## [3.2.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.2.0...v3.2.1) (2026-07-21)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **Samples:** Samples not importing with correct file structure ([2c439fb](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/2c439fb7b1b74676d8042327a3f31911bd890e9c))
-
-
-
-## [3.0.1](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/compare/v3.0.0...v3.0.1) (2026-07-20)
-
-
-### Bug Fixes
-
-* **Samples:** GUID Conflict on import ([60c8afb](https://github.com/Mateo-Jimenez76/Unity-Simple-Trigger-Collider/commit/60c8afb56f48cee695745b137a12488e65662cc4))
 
 
 
