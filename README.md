@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This README is no longer being updated as of 2/14/2026, instead refer to the online [documentation](https://mateo-jimenez76.github.io/docs-pages/Simple-Trigger-Collider/)
+
 # Quick Start
 1. Attach a TriggerCollider2D or TriggerCollider
 2. Click + on any of the UnityEvents you wish to use
